@@ -11,6 +11,7 @@ int desabordaje;
 int mantenimiento;
 aviones *siguiente;
 aviones *anterior;
+char* getinfo();
 aviones(int id, QString tamano, int pasajeros, int desabordaje, int mantenimiento);
 };
 
@@ -39,9 +40,10 @@ pasajero(int id, int n_maletas, int n_documentos,int n_turnos);
 struct cola_pasajeros
 {
     //cola simple
-    pasajero *primera;
+    pasajero *primero;
     void insertar_pasajeros(pasajero *nuevo_pasajero);
     void eliminar_pasajeros();
+    void graficaar_pasajeros();
     cola_pasajeros();
 
 };
@@ -60,7 +62,7 @@ escritorios(int id_cliente, bool disponibilidad, int n_documentos, int turnos_re
 
 struct lista_escritorios
 {
-    //lista doble enlazada
+    //lista doble enlazada ordenada
     escritorios *primero;
     void insertar_escritorios(escritorios *nuevo_escritorio);
     void eliminar_escritorios();
@@ -83,6 +85,7 @@ struct lista_equipaje
     equipaje *primero;
     void insertar_equipaje(equipaje *nuevo_equipaje);
     void eliminar_equipaje();
+    void graficar_equipaje();
     lista_equipaje();
 
 };

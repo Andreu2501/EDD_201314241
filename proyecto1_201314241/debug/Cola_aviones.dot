@@ -1,0 +1,6 @@
+digraph g{
+node[shape=record];10896984[label="Aviones \n id: 1 \n tamano: a \n pasajeros: 1 \n desabordaje(turnos): 1 \n mantenimiento(turnos): 1 "];
+10896984 -> 10896784;
+10896784 -> 10896984;
+10896784[label="Aviones \n id: 1 \n tamano: l \n pasajeros: 2 \n desabordaje(turnos): 2 \n mantenimiento(turnos): 2 "];
+}
