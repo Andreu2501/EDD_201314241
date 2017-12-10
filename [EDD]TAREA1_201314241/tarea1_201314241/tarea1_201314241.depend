@@ -1,0 +1,15 @@
+# depslib dependency file v1.0
+1512864532 source:c:\users\andrea flores\desktop\codeblock\tarea1_201314241\main.c
+	<stdio.h>
+	<stdlib.h>
+	"doble.h"
+
+1512852277 c:\users\andrea flores\desktop\codeblock\tarea1_201314241\doble.h
+
+1512865705 source:c:\users\andrea flores\desktop\codeblock\[edd]tarea1_201314241\tarea1_201314241\main.c
+	<stdio.h>
+	<stdlib.h>
+	"doble.h"
+
+1512865684 c:\users\andrea flores\desktop\codeblock\[edd]tarea1_201314241\tarea1_201314241\doble.h
+
