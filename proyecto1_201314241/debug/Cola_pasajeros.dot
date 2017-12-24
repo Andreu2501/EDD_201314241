@@ -1,7 +1,0 @@
-digraph g{
-node[shape=record];186277096[label="Pasajeros \n id: 2 \n n.maletas: 2 \n n.documentos: 2 \n n.turnos: 2"];
-186277096 -> 186276648;
-186276648[label="Pasajeros \n id: 3 \n n.maletas: 3 \n n.documentos: 3 \n n.turnos: 3"];
-186276648 -> 186276552;
-186276552[label="Pasajeros \n id: 4 \n n.maletas: 4 \n n.documentos: 4 \n n.turnos: 4"];
-}
