@@ -4,12 +4,14 @@ using System.Linq;
 using System.Web;
 using System.Text;
 using System.IO;
+using System.Diagnostics;
 
 
 namespace ServicioWeb
 {
     public class ABB
     {
+        int contador_clusher = 0;
         bool bandera1 = false;
         bool bandera2 = false;
       public class nodo 
@@ -20,15 +22,19 @@ namespace ServicioWeb
             public string contraseña;
             public string correo;
             public int conectado;
+            public int contador;
+            public int contador_destruidas;
             public lista_doble_enlazada lista;
             //apuntador de la lista
             //constructor
-            public nodo(string nickname, string contraseña, string correo, int conectado)
+            public nodo(string nickname, string contraseña, string correo, int conectado,int contador,int contador_destruidas)
             {
                 this.nickname = nickname;
                 this.contraseña = contraseña;
                 this.correo = correo;
                 this.conectado = conectado;
+                this.contador = contador;
+                this.contador_destruidas = contador_destruidas;
                 this.izq = null;
                 this.der = null;
                 this.lista=new lista_doble_enlazada();
@@ -58,9 +64,9 @@ namespace ServicioWeb
             raiz=null;
         }
 
-        public void insertar(string nickname, string contraseña, string correo, int conectado)
+        public void insertar(string nickname, string contraseña, string correo, int conectado,int contador,int contador_destruidas)
         {
-            nodo nuevo = new nodo(nickname, contraseña, correo, conectado);
+            nodo nuevo = new nodo(nickname, contraseña, correo, conectado,contador,contador_destruidas);
     
             if (this.raiz == null)
             {
@@ -130,9 +136,9 @@ namespace ServicioWeb
             }
             else
             {
-                int ni = calcularNivel(raiz.izq);
-                int nd = calcularNivel(raiz.der);
-                return (ni > nd ? ni : nd);
+                int hi = calcularNivel(raiz.izq);
+                int hd = calcularNivel(raiz.der);
+                return (hi > hd ? hi : hd) + 1;
             }
         }
 
@@ -178,24 +184,89 @@ namespace ServicioWeb
           public void graficar()
         {
             TextWriter archivo;
-            archivo = new StreamWriter("C:\\Users\\Andrea Flores\\Documents\\DICIEMBRE2017\\PROYECTO1\\ServicioWeb\\REPORTES\\arbol2017.dot");
+            archivo = new StreamWriter("C:\\ARCHIVOSDOT\\usuarios.dot");
             archivo.WriteLine("digraph G{");
             archivo.WriteLine("node[shape=record, height=.1];");
             archivo.WriteLine(inOrder(raiz));
             archivo.WriteLine(preorder(raiz));
+            int altura = calcularAltura(raiz);
+            int ramas = numeroRamas(raiz);
+            int hojas = numeroHojas(raiz);
+            int nivel = calcularNivel(raiz)-1;
+            archivo.WriteLine("nodoInformacion[label=\"<f0>Altura: " + altura + "|<f1>Ramas: " + ramas + "|<f2>Hojas: " + hojas + "|<f3>Nivel: " + nivel + "\"];");
+            archivo.WriteLine(recorrido_listas(raiz));
             archivo.WriteLine("}");
             archivo.Close();
-             
-           // var filename = "arbol2017.dot";
-            //string path = Directory.GetCurrentDirectory();
-            //GraficarArbol(filename, "C:\\Users\\Andrea Flores\\Documents\\DICIEMBRE2017\\PROYECTO1\\ServicioWeb\\REPORTES\\arbol2017.dot");
 
+            cmdArbol();
+           
 
 
         }
 
+          public void cmdArbol()
+          {
+              try
+              {
 
-     
+
+                  var command = string.Format(" dot.exe -Tpng C:\\ARCHIVOSDOT\\usuarios.dot -o  C:\\ARCHIVOSDOT\\usuarios.png ");
+                  var procStartInfo = new System.Diagnostics.ProcessStartInfo("cmd", "/C " + command);
+                  var proc = new System.Diagnostics.Process();
+                  proc.StartInfo = procStartInfo;
+                  proc.Start();
+                  proc.WaitForExit();
+              }
+              catch (Exception x)
+              {
+
+              }
+
+
+
+          }
+          public void cmdTOPganas()
+          {
+              try
+              {
+                  var command = string.Format(" dot.exe -Tpng C:\\ARCHIVOSDOT\\Top_Ganadas.dot -o  C:\\ARCHIVOSDOT\\Top_Ganadas.png ");
+                  var procStartInfo = new System.Diagnostics.ProcessStartInfo("cmd", "/C " + command);
+                  var proc = new System.Diagnostics.Process();
+                  proc.StartInfo = procStartInfo;
+                  proc.Start();
+                  proc.WaitForExit();
+              }
+              catch (Exception x)
+              {
+
+              }
+
+          }
+          public void cmdDestruidas()
+          {
+              try
+              {
+
+
+                  var command = string.Format(" dot.exe -Tpng C:\\ARCHIVOSDOT\\Top_Destruidas.dot -o  C:\\ARCHIVOSDOT\\Top_Destruidas.png ");
+                  var procStartInfo = new System.Diagnostics.ProcessStartInfo("cmd", "/C " + command);
+                  var proc = new System.Diagnostics.Process();
+                  proc.StartInfo = procStartInfo;
+                  proc.Start();
+                  proc.WaitForExit();
+              }
+              catch (Exception x)
+              {
+
+              }
+
+
+
+          }
+
+
+
+        
 
         public string inOrder(nodo raiz)
         {
@@ -280,7 +351,16 @@ namespace ServicioWeb
 
           public void agregar_lista_abb(nodo raiz, nodo_lista nuevo)
           {
+              
               nodo encontrado = this.buscarNodoAbb(raiz,nuevo.nickname_base);
+              //entran los que tienen partidas ganadas
+              if (nuevo.bandera == 1)
+              {
+                  encontrado.contador = encontrado.contador + 1;
+                  
+              }
+              encontrado.contador_destruidas = encontrado.contador_destruidas + nuevo.unidades_destruidas;
+             
               encontrado.insertar_lista(nuevo);
           }
 
@@ -539,13 +619,13 @@ namespace ServicioWeb
         }
 
         //MODIFICAR DEL ARBOL
-        public int modificar(string datoviejo,string nickname, string contraseña, string correo, int conectado)
+        public int modificar(string datoviejo,string nickname, string contraseña, string correo, int conectado,int contador,int contador_destruidas)
         { 
             if(buscarNodoAbb(this.raiz,datoviejo)!=null)
             {
                 this.eliminar(datoviejo);
-                nodo n1=new nodo(nickname,contraseña,correo,conectado);
-                this.insertar(n1.nickname,n1.contraseña,n1.correo,n1.conectado);
+                nodo n1=new nodo(nickname,contraseña,correo,conectado,contador, contador_destruidas);
+                this.insertar(n1.nickname,n1.contraseña,n1.correo,n1.conectado,n1.contador, contador_destruidas);
                 return 1;
             }else
             {
@@ -578,7 +658,7 @@ namespace ServicioWeb
             }
             else
             {
-                nodo nuevonodo = new nodo(raiz.nickname, raiz.contraseña, raiz.correo, raiz.conectado);
+                nodo nuevonodo = new nodo(raiz.nickname, raiz.contraseña, raiz.correo, raiz.conectado,raiz.contador,raiz.contador_destruidas);
                 nuevonodo.nickname = raiz.nickname;
                 nuevonodo.izq = hacerespejo(raiz.der);
                 nuevonodo.der = hacerespejo(raiz.izq);
@@ -586,14 +666,355 @@ namespace ServicioWeb
             }
             
         }
-       
-            
+        //lista de los top mas ganados
+        lista_top TOP = new lista_top();
        //REALIZACION DEL TOP 10 PARTIDAS GANADAS
+       public void recorrido(nodo raiz)
+       {
+            if (raiz != null)
+            {
+               
+                if (raiz.izq != null)
+                {
+                    if (raiz.izq.contador != 0)
+                    {
+                        nodo_top n = new nodo_top(raiz.izq.nickname, raiz.izq.contador);
+                        TOP.insertarTop(n);
+                    }
+                  
+                }
+                recorrido(raiz.izq);
+               
+                if (raiz.der != null)
+                {
+                    if (raiz.der.contador != 0)
+                    {
+                        nodo_top n = new nodo_top(raiz.der.nickname, raiz.der.contador);
+                        TOP.insertarTop(n);
+                    }
+                   
+                }
+                recorrido(raiz.der);
+                
 
+            }
+
+       
+       }
+        //REALIZACION DE PORCENTAJE DE NAVES DESTRUIDAS
+       lista_top naves = new lista_top();
+        public void recorrido_naves(nodo raiz)
+        {
+            if (raiz != null)
+            {
+
+                if (raiz.izq != null)
+                {
+                    if (raiz.izq.lista.primero != null)
+                    {
+                        nodo_top n = new nodo_top(raiz.izq.nickname, raiz.izq.contador_destruidas);
+                        naves.insertarTop(n);
+                    }
+                    
+
+                }
+                recorrido_naves(raiz.izq);
+
+                if (raiz.der != null)
+                {
+                    if (raiz.der.lista.primero != null)
+                    {
+                        nodo_top n = new nodo_top(raiz.der.nickname, raiz.der.contador_destruidas);
+                        naves.insertarTop(n);
+                    }
+
+                }
+                recorrido_naves(raiz.der);
+
+
+            }
+        
+        
+        }
+
+        
+        public class nodo_top
+        {
+            public nodo_top siguiente;
+            public nodo_top anterior;
+            public int num;
+            public string nickname_base;
+
+            public nodo_top(string nickname_base, int num)
+            {
+                this.nickname_base = nickname_base;
+                this.num = num;
+                this.siguiente = null;
+                this.anterior=null;
+            
+            }
+    
+        }
+        public class lista_top
+        {
+            public nodo_top primero;
+            public nodo_top ultimo;
+            public lista_top()
+            {
+                this.primero = null;
+                this.ultimo=null;
+            }
+            public void insertarTop(nodo_top nuevo)
+            {
+                if (this.primero== null)
+                {
+                    this.primero = nuevo;
+                    this.ultimo=nuevo;
+                }
+                else
+                {
+                    //insertar de primero
+                   if(primero.num<nuevo.num || primero.num==nuevo.num)
+                   {
+                        this.primero.anterior=nuevo;
+                       nuevo.siguiente=this.primero;
+                       this.primero=nuevo;
+                   }else if(nuevo.num<this.ultimo.num || nuevo.num==this.ultimo.num)
+                   {
+                       //insrtando de ultimo
+                    this.ultimo.siguiente=nuevo;
+                    nuevo.anterior=this.ultimo;
+                    this.ultimo=nuevo;
+                   }else
+                   {
+                        nodo_top aux=this.primero;
+                         while(aux.num>nuevo.num)
+                         {
+                            aux=aux.siguiente;
+
+                        }
+                       nodo_top aux2=aux.anterior;
+                       aux.anterior=nuevo;
+                       nuevo.siguiente=aux;
+                       aux2.siguiente=nuevo;
+                       nuevo.anterior=aux2;
+                      
+
+                    
+                   
+                   }
+                
+                }
+
+            
+            }
+
+
+
+           
+
+            }
+
+
+
+
+        public void graficarTOPGANADAS()
+        {
+            int cont = 1;
+            TextWriter archivo;
+            archivo = new StreamWriter("C:\\ARCHIVOSDOT\\Top_Ganadas.dot");
+            archivo.WriteLine("digraph G{");
+            archivo.WriteLine("node[shape=record, height=.1];");
+            nodo_top aux = TOP.primero;
+
+
+            if (aux != null)
+            {
+                do
+                {
+                    archivo.WriteLine(aux.nickname_base + "[label= \" Usuario" + cont + "\\n nickname:  " + aux.nickname_base + "\\n" + "partidas ganadas:  " + aux.num + "\"];");
+                    cont++;
+
+
+                    if (aux.siguiente != null)
+                    {
+                        archivo.WriteLine(aux.nickname_base + "->" + aux.siguiente.nickname_base + ";");
+                        archivo.WriteLine(aux.siguiente.nickname_base + "->" + aux.nickname_base + ";");
+
+                    }
+                    aux = aux.siguiente;
+                } while (cont < 10);
+                if (cont == 10)
+                {
+                    archivo.WriteLine(aux.nickname_base + "[label= \" Usuario" + cont + "\\n nickname:  " + aux.nickname_base + "\\n" + "partidas ganadas:  " + aux.num + "\"];");
+
+
+                }
+
+            }
+            else 
+            {
+                archivo.WriteLine("LA LISTA ESTA VACIA");
+            
+            }
+          
+            archivo.WriteLine("}");
+          
+            archivo.Close();
+            cmdTOPganas();
+            
+            
+
+
+
+
+
+        
+        
+        }
+
+        public void graficarTOP_Unidades_destruidas()
+        {
+            int cont = 1;
+            TextWriter archivo;
+            archivo = new StreamWriter("C:\\ARCHIVOSDOT\\Top_Destruidas.dot");
+            archivo.WriteLine("digraph G{");
+            archivo.WriteLine("node[shape=record, height=.1];");
+            nodo_top aux = naves.primero;
+
+
+            if (aux != null)
+            {
+                do
+                {
+                    archivo.WriteLine(aux.nickname_base + "[label= \" Usuario" + cont + "\\n nickname:  " + aux.nickname_base + "\\n" + "unidades_destruidas:  " + aux.num + "\"];");
+                    cont++;
+
+
+                    if (aux.siguiente != null)
+                    {
+                        archivo.WriteLine(aux.nickname_base + "->" + aux.siguiente.nickname_base + ";");
+                        archivo.WriteLine(aux.siguiente.nickname_base + "->" + aux.nickname_base + ";");
+
+                    }
+                    aux = aux.siguiente;
+                } while (cont < 10);
+                if (cont == 10)
+                {
+                    archivo.WriteLine(aux.nickname_base + "[label= \" Usuario" + cont + "\\n nickname:  " + aux.nickname_base + "\\n" + "unidades_destruidas:  " + aux.num + "\"];");
+
+
+                }
+
+            }
+            else
+            {
+                archivo.WriteLine("LA LISTA ESTA VACIA");
+
+            }
+            archivo.WriteLine("}");
+          
+            archivo.Close();
+            cmdDestruidas();
+            
+        }
+
+
+        public string graficar_lista_usuarios(nodo raiz)
+        {
+            StringBuilder b = new StringBuilder();
+          
+            b.Append("subgraph cluster"+contador_clusher+"{\n");
+            b.Append("node[style=filled];\n");
+
+            nodo_lista aux = raiz.lista.primero;
+            while (aux != null)
+            {
+                b.Append(aux.nickname_base+aux.nickname_oponente+"[label=\""+aux.nickname_oponente+"\"];\n");
+                aux = aux.siguiente;
+            }
+            b.Append("}\n");
+
+            aux = raiz.lista.primero;
+
+            if (aux != null)
+            {
+                b.Append(raiz.nickname + "->" + raiz.lista.primero.nickname_base+raiz.lista.primero.nickname_oponente+ ";\n");
+                while (aux != null)
+                {
+                    if (aux.siguiente != null)
+                    {
+                        b.Append(aux.nickname_base + aux.nickname_oponente + "->" + aux.siguiente.nickname_base + aux.siguiente.nickname_oponente + ";\n");
+                        b.Append(aux.siguiente.nickname_base + aux.siguiente.nickname_oponente + "->" + aux.nickname_base + aux.nickname_oponente + ";\n");
+
+                    }
+                    
+                    aux = aux.siguiente;
+                }
+             
+               
+            }
+            else
+            {
+                b.Append("LA LISTA ESTA VACIA");
+
+            }
+         
+            contador_clusher++;
+            return b.ToString();
+            
+            
+        
+        
+        }
+        StringBuilder b = new StringBuilder();
+        public string recorrido_listas(nodo raiz)
+        {
+             
+            if (raiz != null)
+            {
+
+                if (raiz.izq != null)
+                {
+                    if (raiz.izq.lista.primero !=null)
+                    {
+                       b.Append(graficar_lista_usuarios(raiz.izq));
+                    }
+
+                }
+                recorrido_listas(raiz.izq);
+
+                if (raiz.der != null)
+                {
+                    if (raiz.der.lista.primero != null)
+                    {
+                       b.Append(graficar_lista_usuarios(raiz.der));
+                    }
+
+                }
+                recorrido_listas(raiz.der);
+
+
+            }
+            return b.ToString();
+        
+        }
+
+
+
+
+
+
+
+
+
+
+
+        
+        }
 
         }
             
-   
         
 
-    }
+    

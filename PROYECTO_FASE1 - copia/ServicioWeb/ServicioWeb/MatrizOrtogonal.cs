@@ -416,8 +416,24 @@ namespace ServicioWeb
     }
 }
 
+       public void ParaGraficarNiveles()
+       {
+           int contador = 0;
+           while (contador != 4)
+           {
+               graficarMatriz(contador);
+               contador++;
+           
+           }
+       
+       }
 
+       public void graficarMatriz(int nivel)
+       {
+          encabezado nivelactual= getNivelCorrecto(eFilas.primero,nivel);
 
+       
+       }
 
 
 
