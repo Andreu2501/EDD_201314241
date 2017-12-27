@@ -133,14 +133,25 @@ namespace ServicioWeb
         [WebMethod]
         public string matrices()
         {
-            matriz.insertarMatriz(3, 3, "barco", 0, 2, 3, 2, 0);
-            matriz.insertarMatriz(3, 1, "nave", 0, 2, 4, 5, 1);
-            matriz.insertarMatriz(5, 7, "submarino", 0, 2, 4, 5, 1);
-            matriz.insertarMatriz(5, 7, "vela", 0, 2, 3, 2, 0);
-            matriz.insertarMatriz(5, 7, "bus", 0, 2, 4, 5, 3);
-            matriz.insertarMatriz(3, 1, "barquito", 0, 2, 4, 5, 3);
-            matriz.insertarMatriz(3, 3, "navega", 0, 2, 3, 2, 3);
-            matriz.insertarMatriz(3, 1, "astronauta", 0, 2, 4, 5, 0);
+            matriz.insertarMatriz(1, 3, "barco", 0, 2, 3, 2, 0);
+            matriz.insertarMatriz(1, 5, "barco2", 0, 2, 3, 2, 0);
+            matriz.insertarMatriz(1, 1, "nave", 0, 2, 4, 5, 0);
+
+            matriz.insertarMatriz(1, 7, "submarino", 0, 2, 4, 5, 1);
+
+            matriz.insertarMatriz(5, 5, "vela", 0, 2, 3, 2, 1);
+            matriz.insertarMatriz(5, 1, "nave3", 0, 2, 4, 5, 1);
+
+            matriz.insertarMatriz(5, 7, "submarino3", 0, 2, 4, 5, 2);
+            matriz.insertarMatriz(5, 2, "vela3", 0, 2, 3, 2, 2);
+            matriz.insertarMatriz(6, 4, "nave34", 0, 2, 4, 5, 2);
+            matriz.insertarMatriz(6, 8, "submarino34", 0, 2, 4, 5, 3);
+            matriz.insertarMatriz(4, 2, "vela38", 0, 2, 3, 2, 3);
+           // matriz.insertarMatriz(5, 7, "bus", 0, 2, 4, 5, 3);
+           // matriz.insertarMatriz(3, 1, "barquito", 0, 2, 4, 5, 3);
+           // matriz.insertarMatriz(3, 3, "navega", 0, 2, 3, 2, 3);
+         //   matriz.insertarMatriz(3, 1, "astronauta", 0, 2, 4, 5, 0);
+            matriz.ParaGraficarNiveles();
        
           
            
