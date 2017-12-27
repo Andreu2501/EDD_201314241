@@ -153,122 +153,6 @@ namespace ServicioWeb
 
             }
 
-            public void graficar_columna(TextWriter archivo)
-            {
-                encabezado aux3 = this.primero;
-
-                int cont = 300;
-                if (aux3 == null)
-                {
-
-                    return;
-                }
-                else
-                {
-                    //primero
-                    if (aux3.acceso != null)
-                    {
-                        archivo.WriteLine("Columna" + aux3.id + "[ label=\"" + "Columna" + aux3.id + "\"];\n");
-                        aux3 = aux3.siguiente;
-                        cont++;
-                    }
-                    else { aux3 = aux3.siguiente; }
-                    //resto
-                    while (aux3.siguiente != null)
-                    {
-                        if (aux3.acceso != null)
-                        {
-                            archivo.WriteLine("Columna" + aux3.id + "[ label=\"" + "Columna" + aux3.id + "\"];\n");
-                            aux3 = aux3.siguiente;
-                            cont++;
-                        }
-                        else
-                        {
-                            aux3 = aux3.siguiente;
-                        }
-                    }
-                    //ultimo
-                    if (aux3.acceso != null)
-                    {
-                        archivo.WriteLine("Columna" + aux3.id + "[ label=\"" + "Columna" + aux3.id + "\"];\n");
-                        aux3 = aux3.siguiente;
-                        cont++;
-                    }
-                    else { aux3 = aux3.siguiente; }
-                    //ENLACES
-
-
-                    encabezado aux4 = this.primero;
-
-
-                    aux4 = this.primero;
-                    encabezado aux5 = aux4.siguiente;
-                    int a = 0;
-                    if (aux4 != null)
-                    {
-
-                        while (aux4.siguiente != null)
-                        {
-                            if (aux4.acceso != null)
-                            {
-                                
-                                while (aux5 != null)
-                                {
-                                    if (aux5.acceso != null)
-                                    {
-                                        if (aux4 != aux5)
-                                        {
-                                            archivo.WriteLine("Columna" + aux4.id + "-> Columna" + aux5.id + ";\n");
-                                            archivo.WriteLine("Columna" + aux5.id + "-> Columna" + aux4.id + ";\n");
-
-                                            break;
-                                        }
-
-                                    }
-                                    aux5 = aux5.siguiente;
-                                   
-
-                                }
-                                
-                            }
-                            aux4 = aux4.siguiente;
-                        }
-
-
-
-                    }
-                    archivo.Write("\n");
-
-
-
-
-
-
-
-                    //ACCESOS
-                    aux4 = this.primero;
-                    if (aux4 != null)
-                    {
-                        while (aux4 != null)
-                        {
-                            if (aux4.acceso != null)
-                            {
-
-                                archivo.WriteLine("Columna" + aux4.id + " -> \"Unidad" + aux4.acceso.fila + "," + aux4.acceso.columna + "\";\n");
-                                archivo.WriteLine("\"Unidad" + aux4.acceso.fila + "," + aux4.acceso.columna + "\"" + " ->   Columna" + aux4.id + ";\n");
-
-
-                                aux4 = aux4.siguiente;
-                            }
-                            else
-                            {
-                                aux4 = aux4.siguiente;
-                            }
-                        }
-
-                    }
-                }
-            }
             
 
             public string devolverLetra(int n)
@@ -493,105 +377,8 @@ namespace ServicioWeb
 
 
             }
-            public void graficar_fila(TextWriter archivo)
-            {
-                encabezado aux3 = this.primero;
-
-                int cont = 400;
-                if (aux3 == null)
-                {
-
-                    return;
-                }
-                else
-                {
-                    //primero
-                    if (aux3.acceso != null)
-                    {
-                        archivo.WriteLine("Fila" + aux3.id + "[ label=\"" + "FILA" + aux3.id + "\"];\n");
-                        aux3 = aux3.siguiente;
-                        cont++;
-                    }
-                    else 
-                    {
-                        aux3 = aux3.siguiente;
-                    }
-                    //resto
-                    while (aux3.siguiente != null)
-                    {
-                        if (aux3.acceso != null)
-                        {
-                            archivo.WriteLine("Fila" + aux3.id + "[ label=\"" + "FILA" + aux3.id + "\"];\n");
-                            aux3 = aux3.siguiente;
-                            cont++;
-                        }
-                        else { aux3 = aux3.siguiente; }
-                    }
-                    //ultimo
-                    if (aux3.acceso != null)
-                    {
-                        archivo.WriteLine("Fila" + aux3.id + "[ label=\"" + "FILA" + aux3.id + "\"];\n");
-                        aux3 = aux3.siguiente;
-                        cont++;
-                    }
-                    //ENLACES
-                    encabezado aux4 = this.primero;
-                    int cont2 = cont - 400;
-
-                    aux4 = this.primero;
-                    encabezado aux5 = aux4.siguiente;
-                    int a = 0;
-                    if (aux4 != null)
-                    {
-                        while (aux4.siguiente != null)
-                        {
-                            if (aux4.acceso != null)
-                            {
-                                while (aux5 != null)
-                                {
-                                    if (aux5.acceso != null)
-                                    {
-                                        if (aux4 != aux5)
-                                        {
-                                            archivo.WriteLine("Fila" + aux4.id + "-> Fila" + aux4.siguiente.id + ";\n");
-                                            archivo.WriteLine("Fila" + aux4.siguiente.id + "-> Fila" + aux4.id + ";\n");
-                                            break;
-                                        }
-                                    }
-                                    aux5 = aux5.siguiente;
-                                    }
-                            }
-
-                            aux4 = aux4.siguiente;
-
-                        }
-                    }
-
-                    //ACCESOS
-                    aux4 = this.primero;
-                    while (aux4 != null)
-                    {
-                        if (aux4.acceso != null)
-                        {
-                            
-                                archivo.WriteLine("Fila" + aux4.id + " -> \"Unidad" + aux4.acceso.fila + "," + aux4.acceso.columna + "\";\n");
-                                archivo.WriteLine("\"Unidad" + aux4.acceso.fila + "," + aux4.acceso.columna + "\"" + " -> Fila" + aux4.id + ";\n");
-
-
-                                aux4 = aux4.siguiente;
-                            
-                        }
-                        else
-                        {
-                            aux4 = aux4.siguiente;
-                        }
-                    }
-
-                }
-            }
-
+         
         }
-
         public encabezado getNivelCorrecto(encabezado encontrado, int nivelBuscado)
         {
             while (encontrado.nivel != nivelBuscado)
@@ -630,6 +417,7 @@ namespace ServicioWeb
                 nivel1.abajo = nivel0;
                 //INSERTO EL NIVEL0
                 eFilas.insertar(nivel0);
+              
                 encabezado actualizarnivel = getNivelCorrecto(nivel0, nuevo.nivel);
                 nivel0 = actualizarnivel;
                 nivel0.acceso = nuevo;
@@ -710,6 +498,7 @@ namespace ServicioWeb
 
                 //INSERTO EL NIVEL0
                 eColumnas.insertar(nivel0_c);
+                
                 encabezado actualizarnivel_c = getNivelCorrecto(nivel0_c, nuevo.nivel);
                 nivel0_c = actualizarnivel_c;
 
@@ -876,9 +665,206 @@ namespace ServicioWeb
             }
         }
 
+        public void graficar_fila(TextWriter archivo,int nivel)
+        {
+            encabezado aux3 = eFilas.primero;
+
+            int cont = 400;
+            if (aux3 == null)
+            {
+
+                return;
+            }
+            else
+            {
+                //primero
+               
+                while (aux3 != null)
+                {
+                    encabezado actualizarnivel = getNivelCorrecto(aux3, nivel);
+                    if (actualizarnivel.acceso != null)
+                    {
+                        archivo.WriteLine("Fila" + aux3.id + "[ label=\"" + "FILA" + aux3.id + "\"];\n");
+
+                    }
+                    aux3 = aux3.siguiente;
+                    cont++;
+                }
+
+
+
+                //ENLACES
+           
+               encabezado aux4 = eFilas.primero;
+               aux4 = eFilas.primero;
+               encabezado aux5 = aux4.siguiente;
+                int a = 0;
+                if (aux4 != null)
+                  {
+                     while (aux4 != null)
+                     {
+                          encabezado subiraux4 = getNivelCorrecto(aux4, nivel);
+                             if (subiraux4.acceso != null)
+                                {
+                                 while (aux5 != null)
+                                {
+                                      encabezado subiraux5 = getNivelCorrecto(aux5, nivel);
+                                    if (subiraux5.acceso != null)
+                                       {
+                                         if (subiraux4 != subiraux5)
+                                            {
+
+                                                archivo.WriteLine("Fila" + subiraux4.id + "-> Fila" + subiraux5.id + ";\n");
+                                                archivo.WriteLine("Fila" + subiraux5.id + "-> Fila" + subiraux4.id + ";\n");
+
+
+                                                    break;
+                                              }
+
+                                        }
+                                              aux5 = aux5.siguiente;
+
+
+                                                    }
+
+                                                }
+                                                aux4 = aux4.siguiente;
+                                            }
+
+
+
+                                        }
+                                        archivo.Write("\n");                          
+                //ACCESOS
+             encabezado aux6 = eFilas.primero;
+                while (aux6 != null)
+                {
+                    encabezado subiraux6 = getNivelCorrecto(aux6, nivel);
+                    if (subiraux6.acceso != null)
+                    {
+
+                        archivo.WriteLine("Fila" + subiraux6.id + " -> \"Unidad" + subiraux6.acceso.fila + "," + subiraux6.acceso.columna + "\";\n");
+                        archivo.WriteLine("\"Unidad" + subiraux6.acceso.fila + "," + subiraux6.acceso.columna + "\"" + " -> Fila" + subiraux6.id + ";\n");
+
+
+                        aux6 = aux6.siguiente;
+
+                    }
+                    else
+                    {
+                        aux6 = aux6.siguiente;
+                    }
+                }
+
+            }
+        }
+
+        
+        public void graficar_columna(TextWriter archivo,int nivel)
+            {
+                encabezado aux3 = eColumnas.primero;
+
+                int cont = 300;
+                if (aux3 == null)
+                {
+
+                    return;
+                }
+                else
+                {
+                    //primero
+                    while(aux3!=null){
+                    encabezado actualizarnivel = getNivelCorrecto(aux3, nivel);
+                    if (actualizarnivel.acceso != null)
+                    {
+                        archivo.WriteLine("Columna" + aux3.id + "[ label=\"" + "Columna" + aux3.id + "\"];\n");
+                       
+                    }
+                    aux3 = aux3.siguiente;
+                    cont++;
+                    }
+                  
+                  
+                    //ENLACES DE ENCABEZADOS
+
+
+                    encabezado aux4 = eColumnas.primero;
+
+
+                    aux4 = eColumnas.primero;
+                    encabezado aux5 = aux4.siguiente;
+                    int a = 0;
+                    if (aux4 != null)
+                    {
+
+                        while (aux4!= null)
+                        {
+                            encabezado subiraux4 = getNivelCorrecto(aux4, nivel);
+                            if (subiraux4.acceso != null)
+                            {
+                               
+                                while (aux5 != null)
+                                {
+                                    encabezado subiraux5 = getNivelCorrecto(aux5, nivel);   
+                                    if (subiraux5.acceso != null)
+                                    {
+                                        if (subiraux4 != subiraux5)
+                                        {
+                                            archivo.WriteLine("Columna" + subiraux4.id + "-> Columna" + subiraux5.id + ";\n");
+                                            archivo.WriteLine("Columna" + subiraux5.id + "-> Columna" + subiraux4.id + ";\n");
+
+                                            break;
+                                        }
+                                        
+                                    }
+                                    aux5 = aux5.siguiente;
+                                   
+
+                                }
+                                
+                            }
+                            aux4 = aux4.siguiente;
+                        }
+
+
+
+                    }
+                    archivo.Write("\n");
+
+
+
+
+
+
+
+                    //ACCESOS
+                    encabezado aux6 = eColumnas.primero;
+                    
+                    if (aux6 != null)
+                    {
+                        while (aux6 != null)
+                        {
+                            encabezado subiraux6 = getNivelCorrecto(aux6, nivel);
+                            if (subiraux6.acceso != null)
+                            {
+
+                                archivo.WriteLine("Columna" + subiraux6.id + " -> \"Unidad" + subiraux6.acceso.fila + "," + subiraux6.acceso.columna + "\";\n");
+                                archivo.WriteLine("\"Unidad" + subiraux6.acceso.fila + "," + subiraux6.acceso.columna + "\"" + " ->   Columna" + subiraux6.id + ";\n");
+
+
+                                aux6 = aux6.siguiente;
+                            }
+                            else { aux6 = aux6.siguiente; }
+                           
+                        }
+
+                    }
+                }
+            }
+            
         public void ParaGraficarNiveles()
         {
-            int contador = 0;
+            int contador = 1;
             while (contador != 4)
             {
             graficarMatriz(contador);
@@ -897,6 +883,7 @@ namespace ServicioWeb
             archivo.WriteLine("edge[color=black];");
             archivo.WriteLine("rankdir=UD;\n");
             encabezado aux = eColumnas.primero;
+            encabezado auxFila = eFilas.primero;
            
             archivo.WriteLine("{rank=min;Nivel" + nivel + ";\n");
 
@@ -919,28 +906,31 @@ namespace ServicioWeb
             if (eColumnas.primero != null)
             {
                 //METODO GRAFICAR COLUMNA
-                eColumnas.graficar_columna(archivo);
+                graficar_columna(archivo,nivel);
              
                
 
             }
-            if (eFilas.primero != null)
+            if (auxFila!= null)
             {
                 //METODO GRAFICAR FILA
-                eFilas.graficar_fila(archivo);
+                graficar_fila(archivo,nivel);
 
-                nodo_matriz actualFila = this.eFilas.primero.acceso;
-                encabezado auxFila = this.eFilas.primero;
-                auxFila = getNivelCorrecto(auxFila, nivel);
-                if (actualFila != null)
+  
+                
+                if (eFilas.primero != null)
                 {
                     //ACCESOS DE FILA
+                    
                     while (auxFila != null)
                     {
-                        if (auxFila.acceso != null)
+                        encabezado subirauxFila = getNivelCorrecto(auxFila, nivel);
+                        //subo fila actual
+                        
+                        if (subirauxFila.acceso != null)
                         {
-                            archivo.WriteLine("{rank=same;  Fila" + auxFila.id + ";");
-                            nodo_matriz falso = auxFila.acceso;
+                            archivo.WriteLine("{rank=same;  Fila" + subirauxFila.id + ";");
+                            nodo_matriz falso = subirauxFila.acceso;
                             while (falso != null)
                             {
 
@@ -957,17 +947,38 @@ namespace ServicioWeb
 
 
                 }
-                if (eColumnas.primero != null)
+                encabezado nc = eColumnas.primero;
+                while (nc != null)
                 {
-                    archivo.WriteLine("Nivel" + nivel + "-> Columna"+eColumnas.primero.id+";\n");
+                    encabezado PARANIVELES = getNivelCorrecto(nc, nivel);
+                    if (PARANIVELES.acceso != null)
+                    {
+                        archivo.WriteLine("Nivel" + nivel + "-> Columna" + PARANIVELES.id + ";\n");
+                        archivo.WriteLine("Columna" + PARANIVELES.id+ "-> Nivel" + nivel + ";\n");
+                        break;
+                    }
+                    nc = nc.siguiente;
+
+                }
+                encabezado nf =eFilas.primero;
+                while (nf != null)
+                {
+                    encabezado PARANIVELESF = getNivelCorrecto(nf, nivel);
+                    if (PARANIVELESF.acceso != null)
+                    {
+                        archivo.WriteLine("Nivel" + nivel + " -> Fila" + PARANIVELESF.id + ";\n");
+                        archivo.WriteLine("Fila" + PARANIVELESF.id + "-> Nivel" + nivel + ";\n");
+                        break;
+                    }
+                    nf = nf.siguiente;
+
                 }
 
-                if (eFilas.primero != null)
-                {
-                    archivo.WriteLine("Nivel" + nivel + " -> Fila"+eFilas.primero.id+";\n");
-                }
-
-                graficarNodosInteriores(archivo);
+               
+                
+              
+            
+                graficarNodosInteriores(archivo, nivel);
 
 
             }
@@ -984,17 +995,18 @@ namespace ServicioWeb
 
 
 
-        public void graficarNodosInteriores(TextWriter archivo)
+        public void graficarNodosInteriores(TextWriter archivo,int nivel)
         {
             //primero mandamos el encabezado
             encabezado primero=eFilas.primero;
             //recibo el nodo primero
             
-            while (eFilas.primero != null)
+            while (primero != null)
             {
-                encabezado mandarencabezado = eFilas.getencabezado(primero.id);
-                nodo_matriz aux = mandarencabezado.acceso;
-                if (mandarencabezado.acceso != null)
+                encabezado subirFilas = getNivelCorrecto(primero, nivel);
+
+                nodo_matriz aux = subirFilas.acceso;
+                if (subirFilas.acceso != null)
                 {
                     if (aux != null)
                     {
@@ -1020,14 +1032,14 @@ namespace ServicioWeb
                         }
 
                     }
-                    eFilas.primero = eFilas.primero.siguiente;
+                   
                     primero = primero.siguiente;
                     continue;
 
                 }
                 else
                 {
-                    eFilas.primero = eFilas.primero.siguiente;
+              
                     primero = primero.siguiente;
                 }
             }
