@@ -1,0 +1,82 @@
+digraph G{
+node[shape=record, height=.1,style=filled];
+edge[color=black];
+rankdir=UD;
+
+{rank=min;Nivel1;
+
+Columna1;
+Columna5;
+Columna7;
+};
+
+Columna1[ label="B"];
+
+Columna5[ label="F"];
+
+Columna7[ label="H"];
+
+Columna1-> Columna5;
+
+Columna5-> Columna1;
+
+Columna5-> Columna7;
+
+Columna7-> Columna5;
+
+
+Columna1 -> "Unidad5,1";
+
+"Unidad5,1" ->   Columna1;
+
+Columna5 -> "Unidad5,5";
+
+"Unidad5,5" ->   Columna5;
+
+Columna7 -> "Unidad1,7";
+
+"Unidad1,7" ->   Columna7;
+
+Fila1[ label="FILA1"];
+
+Fila5[ label="FILA5"];
+
+Fila1-> Fila5;
+
+Fila5-> Fila1;
+
+
+Fila1 -> "Unidad1,7";
+
+"Unidad1,7" -> Fila1;
+
+Fila5 -> "Unidad5,1";
+
+"Unidad5,1" -> Fila5;
+
+{rank=same;  Fila1;
+"Unidad1,7";
+}
+
+
+{rank=same;  Fila5;
+"Unidad5,1";
+"Unidad5,5";
+}
+
+
+Nivel1-> Columna1;
+
+Columna1-> Nivel1;
+
+Nivel1 -> Fila1;
+
+Fila1-> Nivel1;
+
+"Unidad5,1"->"Unidad5,5";
+
+"Unidad5,5"->"Unidad5,1";
+
+label = "MATRIZ ORTOGONAL ";
+
+}

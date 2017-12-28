@@ -6,6 +6,7 @@ using System.Text;
 using System.IO;
 using System.Diagnostics;
 
+
 namespace ServicioWeb
 {
     public class MatrizOrtogonal
@@ -155,228 +156,7 @@ namespace ServicioWeb
 
             
 
-            public string devolverLetra(int n)
-            {
-                if (n == 0)
-                {
-                    return "A";
-                }
-                else if (n == 1)
-                {
-                    return "B";
-                }
-                else if (n == 2)
-                {
-                    return "C";
-                }
-                else if (n == 3)
-                {
-                    return "D";
-                }
-                else if (n == 4)
-                {
-                    return "E";
-                }
-                else if (n == 5)
-                {
-                    return "F";
-                }
-                else if (n == 6)
-                {
-                    return "G";
-                }
-                else if (n == 7)
-                {
-                    return "H";
-                }
-                else if (n == 8)
-                {
-                    return "I";
-                }
-                else if (n == 9)
-                {
-                    return "J";
-                }
-                else if (n == 10)
-                {
-                    return "K";
-                }
-                else if (n == 11)
-                {
-                    return "L";
-                }
-                else if (n == 12)
-                {
-                    return "M";
-                }
-                else if (n == 13)
-                {
-                    return "N";
-                }
-                else if (n == 14)
-                {
-                    return "Ñ";
-                }
-                else if (n == 15)
-                {
-                    return "O";
-                }
-                else if (n == 16)
-                {
-                    return "P";
-                }
-                else if (n == 17)
-                {
-                    return "Q";
-                }
-                else if (n == 18)
-                {
-                    return "R";
-                }
-                else if (n == 19)
-                {
-                    return "S";
-                }
-                else if (n == 20)
-                {
-                    return "T";
-                }
-                else if (n == 21)
-                {
-                    return "U";
-                }
-                else if (n == 22)
-                {
-                    return "V";
-                }
-                else if (n == 23)
-                {
-                    return "W";
-                }
-                else if (n == 24)
-                {
-                    return "X";
-                }
-                else if (n == 25)
-                {
-                    return "Y";
-                }
-                else if (n == 26)
-                {
-                    return "Z";
-                }
-                else if (n == 27)
-                {
-                    return "AA";
-
-                }
-                else if (n == 28)
-                {
-                    return "BB";
-                }
-                else if (n == 29)
-                {
-                    return "CC";
-                }
-                else if (n == 30)
-                {
-                    return "DD";
-                }
-                else if (n == 31)
-                {
-                    return "EE";
-                }
-                else if (n == 32)
-                {
-                    return "FF";
-                }
-                else if (n == 33)
-                {
-                    return "GG";
-                }
-                else if (n == 34)
-                {
-                    return "HH";
-                }
-                else if (n == 35)
-                {
-                    return "II";
-                }
-                else if (n == 36)
-                {
-                    return "JJ";
-                }
-                else if (n == 37)
-                {
-                    return "KK";
-                }
-                else if (n == 38)
-                {
-                    return "L";
-                }
-                else if (n == 39)
-                {
-                    return "MM";
-                }
-                else if (n == 40)
-                {
-                    return "N";
-                }
-                else if (n == 41)
-                {
-                    return "ÑÑ";
-                }
-                else if (n == 42)
-                {
-                    return "OO";
-                }
-                else if (n == 43)
-                {
-                    return "PP";
-                }
-                else if (n == 44)
-                {
-                    return "QQ";
-                }
-                else if (n == 45)
-                {
-                    return "RR";
-                }
-                else if (n == 46)
-                {
-                    return "SS";
-                }
-                else if (n == 47)
-                {
-                    return "TT";
-                }
-                else if (n == 48)
-                {
-                    return "UU";
-                }
-                else if (n == 49)
-                {
-                    return "VV";
-                }
-                else if (n == 50)
-                {
-                    return "WW";
-                }
-                else if (n == 51)
-                {
-                    return "XX";
-                }
-                else if (n == 52)
-                {
-                    return "YY";
-                }
-                else
-                {
-                    return "ZZ";
-                }
-
-
-            }
+        
          
         }
         public encabezado getNivelCorrecto(encabezado encontrado, int nivelBuscado)
@@ -777,7 +557,7 @@ namespace ServicioWeb
                     encabezado actualizarnivel = getNivelCorrecto(aux3, nivel);
                     if (actualizarnivel.acceso != null)
                     {
-                        archivo.WriteLine("Columna" + aux3.id + "[ label=\"" + "Columna" + aux3.id + "\"];\n");
+                        archivo.WriteLine("Columna" + aux3.id + "[ label=\"" + devolverLetra( aux3.id)+ "\"];\n");
                        
                     }
                     aux3 = aux3.siguiente;
@@ -864,10 +644,11 @@ namespace ServicioWeb
             
         public void ParaGraficarNiveles()
         {
-            int contador = 1;
+            int contador = 0;
             while (contador != 4)
             {
             graficarMatriz(contador);
+            cmdMatriz(contador);
               contador++;
 
              }
@@ -974,10 +755,7 @@ namespace ServicioWeb
 
                 }
 
-               
-                
-              
-            
+                       
                 graficarNodosInteriores(archivo, nivel);
 
 
@@ -1048,5 +826,261 @@ namespace ServicioWeb
 
 
         }
+
+        public void cmdMatriz(int cont)
+        {
+            try
+            {
+
+
+                var command = string.Format(" dot.exe -Tpng C:\\ARCHIVOSDOT\\Matriz"+cont+".dot -o  C:\\ARCHIVOSDOT\\Matriz"+cont+".png ");
+                var procStartInfo = new System.Diagnostics.ProcessStartInfo("cmd", "/C " + command);
+                var proc = new System.Diagnostics.Process();
+                proc.StartInfo = procStartInfo;
+                proc.Start();
+                proc.WaitForExit();
+            }
+            catch (Exception x)
+            {
+
+            }
+
+
+
+        }
+        // entra el numero y me devuelve la letra para ingresarla
+        public string devolverLetra(int n)
+        {
+            if (n == 0)
+            {
+                return "A";
+            }
+            else if (n == 1)
+            {
+                return "B";
+            }
+            else if (n == 2)
+            {
+                return "C";
+            }
+            else if (n == 3)
+            {
+                return "D";
+            }
+            else if (n == 4)
+            {
+                return "E";
+            }
+            else if (n == 5)
+            {
+                return "F";
+            }
+            else if (n == 6)
+            {
+                return "G";
+            }
+            else if (n == 7)
+            {
+                return "H";
+            }
+            else if (n == 8)
+            {
+                return "I";
+            }
+            else if (n == 9)
+            {
+                return "J";
+            }
+            else if (n == 10)
+            {
+                return "K";
+            }
+            else if (n == 11)
+            {
+                return "L";
+            }
+            else if (n == 12)
+            {
+                return "M";
+            }
+            else if (n == 13)
+            {
+                return "N";
+            }
+            else if (n == 14)
+            {
+                return "Ñ";
+            }
+            else if (n == 15)
+            {
+                return "O";
+            }
+            else if (n == 16)
+            {
+                return "P";
+            }
+            else if (n == 17)
+            {
+                return "Q";
+            }
+            else if (n == 18)
+            {
+                return "R";
+            }
+            else if (n == 19)
+            {
+                return "S";
+            }
+            else if (n == 20)
+            {
+                return "T";
+            }
+            else if (n == 21)
+            {
+                return "U";
+            }
+            else if (n == 22)
+            {
+                return "V";
+            }
+            else if (n == 23)
+            {
+                return "W";
+            }
+            else if (n == 24)
+            {
+                return "X";
+            }
+            else if (n == 25)
+            {
+                return "Y";
+            }
+            else if (n == 26)
+            {
+                return "Z";
+            }
+            else if (n == 27)
+            {
+                return "AA";
+
+            }
+            else if (n == 28)
+            {
+                return "BB";
+            }
+            else if (n == 29)
+            {
+                return "CC";
+            }
+            else if (n == 30)
+            {
+                return "DD";
+            }
+            else if (n == 31)
+            {
+                return "EE";
+            }
+            else if (n == 32)
+            {
+                return "FF";
+            }
+            else if (n == 33)
+            {
+                return "GG";
+            }
+            else if (n == 34)
+            {
+                return "HH";
+            }
+            else if (n == 35)
+            {
+                return "II";
+            }
+            else if (n == 36)
+            {
+                return "JJ";
+            }
+            else if (n == 37)
+            {
+                return "KK";
+            }
+            else if (n == 38)
+            {
+                return "L";
+            }
+            else if (n == 39)
+            {
+                return "MM";
+            }
+            else if (n == 40)
+            {
+                return "N";
+            }
+            else if (n == 41)
+            {
+                return "ÑÑ";
+            }
+            else if (n == 42)
+            {
+                return "OO";
+            }
+            else if (n == 43)
+            {
+                return "PP";
+            }
+            else if (n == 44)
+            {
+                return "QQ";
+            }
+            else if (n == 45)
+            {
+                return "RR";
+            }
+            else if (n == 46)
+            {
+                return "SS";
+            }
+            else if (n == 47)
+            {
+                return "TT";
+            }
+            else if (n == 48)
+            {
+                return "UU";
+            }
+            else if (n == 49)
+            {
+                return "VV";
+            }
+            else if (n == 50)
+            {
+                return "WW";
+            }
+            else if (n == 51)
+            {
+                return "XX";
+            }
+            else if (n == 52)
+            {
+                return "YY";
+            }
+            else
+            {
+                return "ZZ";
+            }
+
+
+        }
+        //entra la letra y sale un numero
+        //paso 1)
+        public int getLetra(char character)
+        {
+            
+            int ascii = (int)character;
+
+            return ascii - 65;
+        
+        }
+          
     }
 }

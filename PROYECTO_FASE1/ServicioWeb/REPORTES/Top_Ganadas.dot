@@ -1,0 +1,31 @@
+digraph G{
+node[shape=record, height=.1];
+marco[label= " Usuario1\n nickname:  marco\npartidas ganadas:  5"];
+marco->galleta;
+galleta->marco;
+galleta[label= " Usuario2\n nickname:  galleta\npartidas ganadas:  4"];
+galleta->pedro;
+pedro->galleta;
+pedro[label= " Usuario3\n nickname:  pedro\npartidas ganadas:  3"];
+pedro->allan;
+allan->pedro;
+allan[label= " Usuario4\n nickname:  allan\npartidas ganadas:  2"];
+allan->duglas;
+duglas->allan;
+duglas[label= " Usuario5\n nickname:  duglas\npartidas ganadas:  1"];
+duglas->dori;
+dori->duglas;
+dori[label= " Usuario6\n nickname:  dori\npartidas ganadas:  1"];
+dori->laura;
+laura->dori;
+laura[label= " Usuario7\n nickname:  laura\npartidas ganadas:  1"];
+laura->fresa;
+fresa->laura;
+fresa[label= " Usuario8\n nickname:  fresa\npartidas ganadas:  1"];
+fresa->mau;
+mau->fresa;
+mau[label= " Usuario9\n nickname:  mau\npartidas ganadas:  1"];
+mau->olga;
+olga->mau;
+olga[label= " Usuario10\n nickname:  olga\npartidas ganadas:  1"];
+}

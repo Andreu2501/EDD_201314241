@@ -1,0 +1,31 @@
+digraph G{
+node[shape=record, height=.1];
+olga[label= " Usuario1\n nickname:  olga\nunidades_destruidas:  150"];
+olga->marco;
+marco->olga;
+marco[label= " Usuario2\n nickname:  marco\nunidades_destruidas:  104"];
+marco->fresa;
+fresa->marco;
+fresa[label= " Usuario3\n nickname:  fresa\nunidades_destruidas:  100"];
+fresa->dori;
+dori->fresa;
+dori[label= " Usuario4\n nickname:  dori\nunidades_destruidas:  57"];
+dori->mau;
+mau->dori;
+mau[label= " Usuario5\n nickname:  mau\nunidades_destruidas:  49"];
+mau->galleta;
+galleta->mau;
+galleta[label= " Usuario6\n nickname:  galleta\nunidades_destruidas:  39"];
+galleta->duglas;
+duglas->galleta;
+duglas[label= " Usuario7\n nickname:  duglas\nunidades_destruidas:  37"];
+duglas->laura;
+laura->duglas;
+laura[label= " Usuario8\n nickname:  laura\nunidades_destruidas:  29"];
+laura->pedro;
+pedro->laura;
+pedro[label= " Usuario9\n nickname:  pedro\nunidades_destruidas:  19"];
+pedro->allan;
+allan->pedro;
+allan[label= " Usuario10\n nickname:  allan\nunidades_destruidas:  11"];
+}

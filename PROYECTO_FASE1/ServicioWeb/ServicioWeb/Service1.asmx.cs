@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Web;
 using System.Web.Services;
+using System.IO;
 
 
 namespace ServicioWeb
@@ -63,9 +64,9 @@ namespace ServicioWeb
          
           // Miarbol.eliminar("nelson");
           // Miarbol.modificar("pedro", "aroldo", "890", "@", 0);
-          ABB.nodo_lista N = new ABB.nodo_lista("allan","lucas1",0,3,2,0);
-          ABB.nodo_lista N1 = new ABB.nodo_lista("allan", "jr1", 3, 1, 3, 1);
-          ABB.nodo_lista N2 = new ABB.nodo_lista("allan", "lorena1", 3, 1, 6, 1);
+          ABB.nodo_lista N = new ABB.nodo_lista("andrea","lucas1",0,3,2,0);
+          ABB.nodo_lista N1 = new ABB.nodo_lista("andrea", "jr1", 3, 1, 3, 1);
+          ABB.nodo_lista N2 = new ABB.nodo_lista("andrea", "lorena1", 3, 1, 6, 1);
           ABB.nodo_lista N22 = new ABB.nodo_lista("pedro", "lucas2", 0, 3, 8, 1);
           ABB.nodo_lista N21 = new ABB.nodo_lista("pedro", "jr2", 3, 1, 9, 1);
           ABB.nodo_lista N23 = new ABB.nodo_lista("pedro", "lorena2", 3, 1, 2, 1);
@@ -112,10 +113,10 @@ namespace ServicioWeb
           Miarbol.agregar_lista_abb(Miarbol.raiz, N17);
           Miarbol.agregar_lista_abb(Miarbol.raiz, N18);
          
-          Miarbol.recorrido(Miarbol.raiz);
-          Miarbol.graficarTOPGANADAS();
-          Miarbol.recorrido_naves(Miarbol.raiz);
-          Miarbol.graficarTOP_Unidades_destruidas();
+         // Miarbol.recorrido(Miarbol.raiz);
+          //Miarbol.graficarTOPGANADAS();
+          //Miarbol.recorrido_naves(Miarbol.raiz);
+          //Miarbol.graficarTOP_Unidades_destruidas();
          // Miarbol.modificarL("allan", "lorena", 1, 1, 1, 1);
           //Miarbol.ELIMINAR_LISTA_JUEGOS(Miarbol.raiz, "allan", "jr");
            //ABB.nodo_lista N1 = new ABB.nodo_lista("gaby", "lucas3", 0, 3, 2, 0);
@@ -157,6 +158,101 @@ namespace ServicioWeb
            
             return "exitosa matriz";
         }
+
+        [WebMethod]
+        public string leercsvUsuarios()
+        {   
+            
+            string ubicacionArchivo=("C:\\Users\\Andrea Flores\\Desktop\\CARGAS\\usuarios.csv");
+            try
+            {
+                StreamReader f = new StreamReader(ubicacionArchivo);
+                string lineas = f.ReadLine();
+                lineas = f.ReadLine();
+                while (lineas != null)
+                {
+                    
+                        char[] delimitador = { ',' };
+                        string[] palabras = lineas.Split(delimitador);
+                        Miarbol.insertar(palabras[0], palabras[1], palabras[2], Convert.ToInt32(palabras[3].ToString()), 0, 0);
+                        lineas = f.ReadLine();         
+                }
+                
+                f.Close();
+               // Miarbol.graficar();
+                
+            }
+            catch (Exception e)
+            { 
+                Console.WriteLine("Exception"+e.Message);
+            }
+            return "archivo leido de usuarios" ;
+        }
+
+        [WebMethod]
+        public string leercsvJuegos_usuarios()
+        {
+            //leercsvUsuarios();
+            string ubicacionArchivo=("C:\\Users\\Andrea Flores\\Desktop\\CARGAS\\juegos.csv");
+            try
+            {
+                StreamReader f = new StreamReader(ubicacionArchivo);
+                string lineas = f.ReadLine();
+                lineas = f.ReadLine();
+                while (lineas != null)
+                {
+                    
+                        char[] delimitador = { ',' };
+                        string[] palabras = lineas.Split(delimitador);
+                        ABB.nodo_lista nuevo = new ABB.nodo_lista(palabras[0],palabras[1],Convert.ToInt32(palabras[2].ToString()), Convert.ToInt32(palabras[3].ToString()),Convert.ToInt32(palabras[4].ToString()),Convert.ToInt32(palabras[5].ToString()));
+                        Miarbol.agregar_lista_abb(Miarbol.raiz,nuevo);
+                        lineas = f.ReadLine();         
+                }
+                
+                f.Close();
+                Miarbol.graficar();
+                
+            }
+            catch (Exception e)
+            { 
+                Console.WriteLine("Exception"+e.Message);
+            }
+
+
+            return "archivo leido exitosamente, juego de usuarios";
+        }
+
+        [WebMethod]
+        public string leercsvTablero()
+        {
+
+            string ubicacionArchivo = ("C:\\Users\\Andrea Flores\\Desktop\\CARGAS\\tablero.csv");
+            try
+            {
+                StreamReader f = new StreamReader(ubicacionArchivo);
+                string lineas = f.ReadLine();
+                lineas = f.ReadLine();
+                while (lineas != null)
+                {
+
+                    char[] delimitador = { ',' };
+                    string[] palabras = lineas.Split(delimitador);
+
+                    //matriz.insertarMatriz(
+                    lineas = f.ReadLine();
+                }
+
+                f.Close();
+                // Miarbol.graficar();
+
+            }
+            catch (Exception e)
+            {
+                Console.WriteLine("Exception" + e.Message);
+            }
+            return "el archivo se ha leido exitosamente";
+        }
+
    
     }
 }

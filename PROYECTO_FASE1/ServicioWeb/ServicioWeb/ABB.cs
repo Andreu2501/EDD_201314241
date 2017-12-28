@@ -194,7 +194,7 @@ namespace ServicioWeb
             int hojas = numeroHojas(raiz);
             int nivel = calcularNivel(raiz)-1;
             archivo.WriteLine("nodoInformacion[label=\"<f0>Altura: " + altura + "|<f1>Ramas: " + ramas + "|<f2>Hojas: " + hojas + "|<f3>Nivel: " + nivel + "\"];");
-            archivo.WriteLine(recorrido_listas(raiz));
+            archivo.WriteLine(recorrido_principal(raiz));
             archivo.WriteLine("}");
             archivo.Close();
 
@@ -968,11 +968,26 @@ namespace ServicioWeb
         
         }
         StringBuilder b = new StringBuilder();
+       
+        public string recorrido_principal(nodo raiz)
+        { if(raiz!=null){
+             if (raiz.lista.primero != null)
+            {
+                b.Append(graficar_lista_usuarios(raiz));
+                recorrido_listas(raiz);
+            }
+             
+        }
+
+        return b.ToString();
+       
+        }
         public string recorrido_listas(nodo raiz)
         {
-             
+           
             if (raiz != null)
             {
+                
 
                 if (raiz.izq != null)
                 {
@@ -993,6 +1008,9 @@ namespace ServicioWeb
 
                 }
                 recorrido_listas(raiz.der);
+
+
+                
 
 
             }
