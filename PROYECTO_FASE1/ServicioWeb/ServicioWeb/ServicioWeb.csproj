@@ -57,6 +57,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="ABB.cs" />
+    <Compile Include="Listas.cs" />
     <Compile Include="MatrizOrtogonal.cs" />
     <Compile Include="Service1.asmx.cs">
       <DependentUpon>Service1.asmx</DependentUpon>

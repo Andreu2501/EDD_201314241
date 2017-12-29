@@ -1,0 +1,405 @@
+<?xml version="1.0" encoding="utf-8"?>
+<wsdl:definitions xmlns:soapenc="http://schemas.xmlsoap.org/soap/encoding/" xmlns:mime="http://schemas.xmlsoap.org/wsdl/mime/" xmlns:tns="http://localhost/webService" xmlns:s="http://www.w3.org/2001/XMLSchema" xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" xmlns:tm="http://microsoft.com/wsdl/mime/textMatching/" xmlns:http="http://schemas.xmlsoap.org/wsdl/http/" xmlns:soap12="http://schemas.xmlsoap.org/wsdl/soap12/" targetNamespace="http://localhost/webService" xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">
+  <wsdl:documentation xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">servicio web de Naval Wars</wsdl:documentation>
+  <wsdl:types>
+    <s:schema elementFormDefault="qualified" targetNamespace="http://localhost/webService">
+      <s:element name="HelloWorld">
+        <s:complexType />
+      </s:element>
+      <s:element name="HelloWorldResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="HelloWorldResult" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="horayfecha">
+        <s:complexType />
+      </s:element>
+      <s:element name="horayfechaResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="horayfechaResult" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="insertarespejo">
+        <s:complexType />
+      </s:element>
+      <s:element name="insertarespejoResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="insertarespejoResult" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="InsertarArbol">
+        <s:complexType />
+      </s:element>
+      <s:element name="InsertarArbolResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="InsertarArbolResult" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="matrices">
+        <s:complexType />
+      </s:element>
+      <s:element name="matricesResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="matricesResult" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="leercsvUsuarios">
+        <s:complexType />
+      </s:element>
+      <s:element name="leercsvUsuariosResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="leercsvUsuariosResult" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="leercsvJuegos_usuarios">
+        <s:complexType />
+      </s:element>
+      <s:element name="leercsvJuegos_usuariosResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="leercsvJuegos_usuariosResult" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="leercsvTablero">
+        <s:complexType />
+      </s:element>
+      <s:element name="leercsvTableroResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="leercsvTableroResult" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="leerJuegoActual">
+        <s:complexType />
+      </s:element>
+      <s:element name="leerJuegoActualResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="leerJuegoActualResult" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="Reportede0">
+        <s:complexType />
+      </s:element>
+      <s:element name="Reportede0Response">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="Reportede0Result" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+    </s:schema>
+  </wsdl:types>
+  <wsdl:message name="HelloWorldSoapIn">
+    <wsdl:part name="parameters" element="tns:HelloWorld" />
+  </wsdl:message>
+  <wsdl:message name="HelloWorldSoapOut">
+    <wsdl:part name="parameters" element="tns:HelloWorldResponse" />
+  </wsdl:message>
+  <wsdl:message name="horayfechaSoapIn">
+    <wsdl:part name="parameters" element="tns:horayfecha" />
+  </wsdl:message>
+  <wsdl:message name="horayfechaSoapOut">
+    <wsdl:part name="parameters" element="tns:horayfechaResponse" />
+  </wsdl:message>
+  <wsdl:message name="insertarespejoSoapIn">
+    <wsdl:part name="parameters" element="tns:insertarespejo" />
+  </wsdl:message>
+  <wsdl:message name="insertarespejoSoapOut">
+    <wsdl:part name="parameters" element="tns:insertarespejoResponse" />
+  </wsdl:message>
+  <wsdl:message name="InsertarArbolSoapIn">
+    <wsdl:part name="parameters" element="tns:InsertarArbol" />
+  </wsdl:message>
+  <wsdl:message name="InsertarArbolSoapOut">
+    <wsdl:part name="parameters" element="tns:InsertarArbolResponse" />
+  </wsdl:message>
+  <wsdl:message name="matricesSoapIn">
+    <wsdl:part name="parameters" element="tns:matrices" />
+  </wsdl:message>
+  <wsdl:message name="matricesSoapOut">
+    <wsdl:part name="parameters" element="tns:matricesResponse" />
+  </wsdl:message>
+  <wsdl:message name="leercsvUsuariosSoapIn">
+    <wsdl:part name="parameters" element="tns:leercsvUsuarios" />
+  </wsdl:message>
+  <wsdl:message name="leercsvUsuariosSoapOut">
+    <wsdl:part name="parameters" element="tns:leercsvUsuariosResponse" />
+  </wsdl:message>
+  <wsdl:message name="leercsvJuegos_usuariosSoapIn">
+    <wsdl:part name="parameters" element="tns:leercsvJuegos_usuarios" />
+  </wsdl:message>
+  <wsdl:message name="leercsvJuegos_usuariosSoapOut">
+    <wsdl:part name="parameters" element="tns:leercsvJuegos_usuariosResponse" />
+  </wsdl:message>
+  <wsdl:message name="leercsvTableroSoapIn">
+    <wsdl:part name="parameters" element="tns:leercsvTablero" />
+  </wsdl:message>
+  <wsdl:message name="leercsvTableroSoapOut">
+    <wsdl:part name="parameters" element="tns:leercsvTableroResponse" />
+  </wsdl:message>
+  <wsdl:message name="leerJuegoActualSoapIn">
+    <wsdl:part name="parameters" element="tns:leerJuegoActual" />
+  </wsdl:message>
+  <wsdl:message name="leerJuegoActualSoapOut">
+    <wsdl:part name="parameters" element="tns:leerJuegoActualResponse" />
+  </wsdl:message>
+  <wsdl:message name="Reportede0SoapIn">
+    <wsdl:part name="parameters" element="tns:Reportede0" />
+  </wsdl:message>
+  <wsdl:message name="Reportede0SoapOut">
+    <wsdl:part name="parameters" element="tns:Reportede0Response" />
+  </wsdl:message>
+  <wsdl:portType name="ServicioWebSoap">
+    <wsdl:operation name="HelloWorld">
+      <wsdl:input message="tns:HelloWorldSoapIn" />
+      <wsdl:output message="tns:HelloWorldSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="horayfecha">
+      <wsdl:input message="tns:horayfechaSoapIn" />
+      <wsdl:output message="tns:horayfechaSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="insertarespejo">
+      <wsdl:input message="tns:insertarespejoSoapIn" />
+      <wsdl:output message="tns:insertarespejoSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="InsertarArbol">
+      <wsdl:input message="tns:InsertarArbolSoapIn" />
+      <wsdl:output message="tns:InsertarArbolSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="matrices">
+      <wsdl:input message="tns:matricesSoapIn" />
+      <wsdl:output message="tns:matricesSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="leercsvUsuarios">
+      <wsdl:input message="tns:leercsvUsuariosSoapIn" />
+      <wsdl:output message="tns:leercsvUsuariosSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="leercsvJuegos_usuarios">
+      <wsdl:input message="tns:leercsvJuegos_usuariosSoapIn" />
+      <wsdl:output message="tns:leercsvJuegos_usuariosSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="leercsvTablero">
+      <wsdl:input message="tns:leercsvTableroSoapIn" />
+      <wsdl:output message="tns:leercsvTableroSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="leerJuegoActual">
+      <wsdl:input message="tns:leerJuegoActualSoapIn" />
+      <wsdl:output message="tns:leerJuegoActualSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="Reportede0">
+      <wsdl:input message="tns:Reportede0SoapIn" />
+      <wsdl:output message="tns:Reportede0SoapOut" />
+    </wsdl:operation>
+  </wsdl:portType>
+  <wsdl:binding name="ServicioWebSoap" type="tns:ServicioWebSoap">
+    <soap:binding transport="http://schemas.xmlsoap.org/soap/http" />
+    <wsdl:operation name="HelloWorld">
+      <soap:operation soapAction="http://localhost/webService/HelloWorld" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="horayfecha">
+      <soap:operation soapAction="http://localhost/webService/horayfecha" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="insertarespejo">
+      <soap:operation soapAction="http://localhost/webService/insertarespejo" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="InsertarArbol">
+      <soap:operation soapAction="http://localhost/webService/InsertarArbol" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="matrices">
+      <soap:operation soapAction="http://localhost/webService/matrices" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="leercsvUsuarios">
+      <soap:operation soapAction="http://localhost/webService/leercsvUsuarios" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="leercsvJuegos_usuarios">
+      <soap:operation soapAction="http://localhost/webService/leercsvJuegos_usuarios" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="leercsvTablero">
+      <soap:operation soapAction="http://localhost/webService/leercsvTablero" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="leerJuegoActual">
+      <soap:operation soapAction="http://localhost/webService/leerJuegoActual" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="Reportede0">
+      <soap:operation soapAction="http://localhost/webService/Reportede0" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+  </wsdl:binding>
+  <wsdl:binding name="ServicioWebSoap12" type="tns:ServicioWebSoap">
+    <soap12:binding transport="http://schemas.xmlsoap.org/soap/http" />
+    <wsdl:operation name="HelloWorld">
+      <soap12:operation soapAction="http://localhost/webService/HelloWorld" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="horayfecha">
+      <soap12:operation soapAction="http://localhost/webService/horayfecha" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="insertarespejo">
+      <soap12:operation soapAction="http://localhost/webService/insertarespejo" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="InsertarArbol">
+      <soap12:operation soapAction="http://localhost/webService/InsertarArbol" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="matrices">
+      <soap12:operation soapAction="http://localhost/webService/matrices" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="leercsvUsuarios">
+      <soap12:operation soapAction="http://localhost/webService/leercsvUsuarios" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="leercsvJuegos_usuarios">
+      <soap12:operation soapAction="http://localhost/webService/leercsvJuegos_usuarios" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="leercsvTablero">
+      <soap12:operation soapAction="http://localhost/webService/leercsvTablero" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="leerJuegoActual">
+      <soap12:operation soapAction="http://localhost/webService/leerJuegoActual" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="Reportede0">
+      <soap12:operation soapAction="http://localhost/webService/Reportede0" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+  </wsdl:binding>
+  <wsdl:service name="ServicioWeb">
+    <wsdl:documentation xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">servicio web de Naval Wars</wsdl:documentation>
+    <wsdl:port name="ServicioWebSoap" binding="tns:ServicioWebSoap">
+      <soap:address location="http://localhost:15816/Service1.asmx" />
+    </wsdl:port>
+    <wsdl:port name="ServicioWebSoap12" binding="tns:ServicioWebSoap12">
+      <soap12:address location="http://localhost:15816/Service1.asmx" />
+    </wsdl:port>
+  </wsdl:service>
+</wsdl:definitions>

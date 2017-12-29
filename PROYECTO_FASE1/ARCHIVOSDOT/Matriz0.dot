@@ -1,0 +1,14 @@
+digraph G{
+node[shape=record, height=.1,style=filled];
+edge[color=black];
+rankdir=UD;
+
+{rank=min;Nivel0;
+
+};
+
+
+
+label = "MATRIZ ORTOGONAL ";
+
+}

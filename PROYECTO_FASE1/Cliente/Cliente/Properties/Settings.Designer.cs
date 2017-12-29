@@ -27,10 +27,12 @@ namespace Cliente.Properties {
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
         [global::System.Configuration.SpecialSettingAttribute(global::System.Configuration.SpecialSetting.WebServiceUrl)]
         [global::System.Configuration.DefaultSettingValueAttribute("http://localhost:15816/Service1.asmx")]
-        public string Cliente_localhost_ServicioWeb {
+        public string Cliente_serviciosw_ServicioWeb {
             get {
-                return ((string)(this["Cliente_localhost_ServicioWeb"]));
+                return ((string)(this["Cliente_serviciosw_ServicioWeb"]));
             }
         }
+
+        public string Cliente_localhost_ServicioWeb { get; set; }
     }
 }

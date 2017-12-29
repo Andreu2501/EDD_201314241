@@ -19,8 +19,12 @@ namespace ServicioWeb
     // [System.Web.Script.Services.ScriptService]
     public class Service1 : System.Web.Services.WebService
     {
-        ABB Miarbol = new ABB();
-        MatrizOrtogonal matriz = new MatrizOrtogonal();
+        static ABB Miarbol = new ABB();
+        static MatrizOrtogonal matriz = new MatrizOrtogonal();
+        static Listas guardar = new Listas();
+        
+        
+       
 
         [WebMethod]
         public string HelloWorld()
@@ -42,8 +46,72 @@ namespace ServicioWeb
            
             return "espejo listo";
         }
+//*****************************************
+        //ABC USUARIOS
+        [WebMethod]
+        public string insertarUsuario(string nickname, string contraseña, string correo, int conectado)
+        {
+            Miarbol.insertar(nickname, contraseña, correo, conectado, 0, 0);
+            return "se inserto exitosamente los usuarios";
+        }
 
         [WebMethod]
+        public string modificarUsuario(string nickname, string dato_nuevo, string contraseña_nuevo, string correo_nuevo, int conectado_nuevo)
+        {
+            Miarbol.modificar(nickname, dato_nuevo, contraseña_nuevo, correo_nuevo, conectado_nuevo, 0, 0);
+
+            return "se modifico exitosamente los usuarios";
+        }
+
+        [WebMethod]
+
+        public string eliminarUsuario(string nickname_eliminar)
+        {
+
+            Miarbol.eliminar(nickname_eliminar);
+            return "se ha eliminado el usuario exitosamente";
+        }
+
+//***********************************************
+        //ABC JUEGOS
+        [WebMethod]
+        public string insertarjuego(string nickname_base, string nickname_oponente, int unidades_desplegadas, int unidades_sobrevivientes, int unidades_destruidas, int gano)
+        {
+            ABB.nodo_lista nuevo = new ABB.nodo_lista(nickname_base, nickname_oponente, unidades_desplegadas, unidades_sobrevivientes, unidades_destruidas, gano);
+            Miarbol.agregar_lista_abb(Miarbol.raiz, nuevo);
+            return "se ha insertado exitosamente los juegos";
+        }
+
+        [WebMethod]
+        public string modificarJuego(string nickname_base, string nickname_oponente, int unidades_desplegadas, int unidades_sobrevivientes, int unidades_destruidas, int gano)
+        {
+            Miarbol.modificarL(nickname_base, nickname_oponente, unidades_desplegadas, unidades_sobrevivientes, unidades_destruidas, gano);
+            return "se ha modificado exitosamente los juegos del usuario";
+        }
+
+        [WebMethod]
+        public string eliminarJuego(string nickname_base, string nickname_oponente)
+        {
+            Miarbol.ELIMINAR_LISTA_JUEGOS(Miarbol.raiz, nickname_base, nickname_oponente);
+            return "se ha eliminado exitosamente del juego del usuaririo";
+        }
+//*********************************************************************************************
+        [WebMethod]
+        public string graficarUsuario()
+        {
+            Miarbol.graficar();
+            return "el arbol se ha graficado correctamente";
+        }
+
+        [WebMethod]
+        public string graficarEspejo()
+        {
+            Miarbol.espejo(Miarbol.raiz);
+            Miarbol.graficar();
+            return "el arbol espejo se ha graficado correctamente";
+        }
+
+      /*  [WebMethod]
         public string InsertarArbol()
         {
             
@@ -113,10 +181,10 @@ namespace ServicioWeb
           Miarbol.agregar_lista_abb(Miarbol.raiz, N17);
           Miarbol.agregar_lista_abb(Miarbol.raiz, N18);
          
-         // Miarbol.recorrido(Miarbol.raiz);
-          //Miarbol.graficarTOPGANADAS();
-          //Miarbol.recorrido_naves(Miarbol.raiz);
-          //Miarbol.graficarTOP_Unidades_destruidas();
+         Miarbol.recorrido(Miarbol.raiz);
+          Miarbol.graficarTOPGANADAS();
+          Miarbol.recorrido_naves(Miarbol.raiz);
+          Miarbol.graficarTOP_Unidades_destruidas();
          // Miarbol.modificarL("allan", "lorena", 1, 1, 1, 1);
           //Miarbol.ELIMINAR_LISTA_JUEGOS(Miarbol.raiz, "allan", "jr");
            //ABB.nodo_lista N1 = new ABB.nodo_lista("gaby", "lucas3", 0, 3, 2, 0);
@@ -125,29 +193,30 @@ namespace ServicioWeb
            //Miarbol.agregar_lista_abb(Miarbol.raiz, N1);
           // Miarbol.espejo(Miarbol.raiz);
           //Miarbol.espejo(Miarbol.raiz);
-           Miarbol.graficar();
+          // Miarbol.graficar();*/
            
 
-           return "insertardo";
+         //  return "insertardo";
             
-        }
+        //}
+     /*
         [WebMethod]
         public string matrices()
         {
-            matriz.insertarMatriz(1, 3, "barco", 0, 2, 3, 2, 0);
-            matriz.insertarMatriz(1, 5, "barco2", 0, 2, 3, 2, 0);
-            matriz.insertarMatriz(1, 1, "nave", 0, 2, 4, 5, 0);
+            matriz.insertarMatriz("pablo",1, 3, "barco",  0);
+            matriz.insertarMatriz("pedro",1, 5, "barco2",0);
+            matriz.insertarMatriz("andrea",1, 1, "nave", 0);
 
-            matriz.insertarMatriz(1, 7, "submarino", 0, 2, 4, 5, 1);
+            matriz.insertarMatriz("celeste",1, 7, "submarino", 1);
 
-            matriz.insertarMatriz(5, 5, "vela", 0, 2, 3, 2, 1);
-            matriz.insertarMatriz(5, 1, "nave3", 0, 2, 4, 5, 1);
+            matriz.insertarMatriz("jr",5, 5, "vela",  1);
+            matriz.insertarMatriz("telma",5, 1, "nave3", 1);
 
-            matriz.insertarMatriz(5, 7, "submarino3", 0, 2, 4, 5, 2);
-            matriz.insertarMatriz(5, 2, "vela3", 0, 2, 3, 2, 2);
-            matriz.insertarMatriz(6, 4, "nave34", 0, 2, 4, 5, 2);
-            matriz.insertarMatriz(6, 8, "submarino34", 0, 2, 4, 5, 3);
-            matriz.insertarMatriz(4, 2, "vela38", 0, 2, 3, 2, 3);
+            matriz.insertarMatriz("mau",5, 7, "submarino3", 2);
+            matriz.insertarMatriz("conejo",5, 2, "vela3",  2);
+            matriz.insertarMatriz("dog",6, 4, "nave34", 2);
+            matriz.insertarMatriz("ser",6, 8, "submarino34", 3);
+            matriz.insertarMatriz("kl",4, 2, "vela38", 3);
            // matriz.insertarMatriz(5, 7, "bus", 0, 2, 4, 5, 3);
            // matriz.insertarMatriz(3, 1, "barquito", 0, 2, 4, 5, 3);
            // matriz.insertarMatriz(3, 3, "navega", 0, 2, 3, 2, 3);
@@ -156,13 +225,13 @@ namespace ServicioWeb
        
           
            
-            return "exitosa matriz";
-        }
+            return "exitosa matriz";*/
+      //  }
 
         [WebMethod]
         public string leercsvUsuarios()
         {   
-            
+          
             string ubicacionArchivo=("C:\\Users\\Andrea Flores\\Desktop\\CARGAS\\usuarios.csv");
             try
             {
@@ -179,7 +248,7 @@ namespace ServicioWeb
                 }
                 
                 f.Close();
-               // Miarbol.graficar();
+               
                 
             }
             catch (Exception e)
@@ -192,7 +261,7 @@ namespace ServicioWeb
         [WebMethod]
         public string leercsvJuegos_usuarios()
         {
-            //leercsvUsuarios();
+           //leercsvUsuarios();
             string ubicacionArchivo=("C:\\Users\\Andrea Flores\\Desktop\\CARGAS\\juegos.csv");
             try
             {
@@ -206,11 +275,16 @@ namespace ServicioWeb
                         string[] palabras = lineas.Split(delimitador);
                         ABB.nodo_lista nuevo = new ABB.nodo_lista(palabras[0],palabras[1],Convert.ToInt32(palabras[2].ToString()), Convert.ToInt32(palabras[3].ToString()),Convert.ToInt32(palabras[4].ToString()),Convert.ToInt32(palabras[5].ToString()));
                         Miarbol.agregar_lista_abb(Miarbol.raiz,nuevo);
+                        
                         lineas = f.ReadLine();         
                 }
                 
                 f.Close();
-                Miarbol.graficar();
+                Miarbol.recorridoTOP(Miarbol.raiz);
+                Miarbol.graficarTOPGANADAS();
+                Miarbol.recorridoPrincipalNaves(Miarbol.raiz);
+                Miarbol.graficarTOP_Unidades_destruidas();
+                // Miarbol.graficar();
                 
             }
             catch (Exception e)
@@ -225,6 +299,8 @@ namespace ServicioWeb
         [WebMethod]
         public string leercsvTablero()
         {
+            
+            
 
             string ubicacionArchivo = ("C:\\Users\\Andrea Flores\\Desktop\\CARGAS\\tablero.csv");
             try
@@ -237,12 +313,24 @@ namespace ServicioWeb
 
                     char[] delimitador = { ',' };
                     string[] palabras = lineas.Split(delimitador);
-
-                    //matriz.insertarMatriz(
+                    //guardando los 1;
+                   
+                        Listas.nodoM nuevo = new Listas.nodoM(palabras[0], palabras[1], Convert.ToInt32(palabras[2]), palabras[3], Convert.ToInt32(palabras[4]));
+                        guardar.insertar_achivo(nuevo);
+                      
+                   
+                   
+                   // int col=matriz.getLetra(Convert.ToChar(palabras[1]));
+                    //int nivel=matriz.setnivel(palabras[3]);
+                    //matriz.insertarMatriz(palabras[0],col ,Convert.ToInt32(palabras[2]), palabras[3],nivel);
                     lineas = f.ReadLine();
                 }
 
                 f.Close();
+                //Reportede0();
+                //Reporte1();//sobrevivientes
+                   
+                
                 // Miarbol.graficar();
 
             }
@@ -250,9 +338,137 @@ namespace ServicioWeb
             {
                 Console.WriteLine("Exception" + e.Message);
             }
-            return "el archivo se ha leido exitosamente";
+            return "el archivo se ha leido el archivo tablero exitosamente";
         }
 
-   
+        [WebMethod]
+        public string leerJuegoActual()
+        {
+            string ubicacionArchivo = ("C:\\Users\\Andrea Flores\\Desktop\\CARGAS\\juegoActual.csv");
+            try
+            {
+                StreamReader f = new StreamReader(ubicacionArchivo);
+                string lineas = f.ReadLine();
+                lineas = f.ReadLine();
+                while (lineas != null)
+                {
+
+                    char[] delimitador = { ',' };
+                    string[] palabras = lineas.Split(delimitador);
+                    
+                    lineas = f.ReadLine();
+                }
+
+                f.Close();
+              
+
+            }
+            catch (Exception e)
+            {
+                Console.WriteLine("Exception" + e.Message);
+            }
+            return "el archivo se ha leido el archivo juego exitoso exitosamente";
+        
+        }
+
+        [WebMethod]
+
+        public string Reportede0()
+        {
+            MatrizOrtogonal matriz_destruida = new MatrizOrtogonal();
+            
+            Listas.nodoM aux = guardar.primero;
+            while (aux != null)
+            {
+                if (aux.num == 0)
+                {
+                    int col = matriz.getLetra(Convert.ToChar(aux.columna));
+                    int nivel = matriz.setnivel(aux.unidad);
+                    matriz_destruida.insertarMatriz(aux.jugador, aux.fila, col, aux.unidad, nivel);
+                }
+                aux = aux.siguiente;
+
+            }
+            matriz_destruida.ParaGraficarNiveles();
+           
+            return "Reporte de destruidos generado";        
+        }
+         [WebMethod]
+        public string Reporte1()
+        {
+            MatrizOrtogonal matriz_sobrevivientes = new MatrizOrtogonal();
+            Listas.nodoM aux = guardar.primero;
+            while (aux != null)
+            {
+                if (aux.num == 1)
+                {
+                    int col = matriz.getLetra(Convert.ToChar(aux.columna));
+                    int nivel = matriz.setnivel(aux.unidad);
+                    matriz_sobrevivientes.insertarMatriz(aux.jugador, aux.fila, col, aux.unidad, nivel);
+                }
+                aux = aux.siguiente;
+
+            }
+            matriz_sobrevivientes.ParaGraficarNiveles();
+
+            return "Reporte de sobrevivientes generado"; 
+        
+        }
+
+         [WebMethod]
+         public bool VerificarExistenciaUsuario(string nickname, string contraseña)
+         {
+            
+            ABB.nodo devuelve= Miarbol.buscarUsuarioContraseña(Miarbol.raiz, nickname, contraseña);
+            if (devuelve != null)
+            {
+                return true;
+            }
+            
+             return false;
+         }
+
+         [WebMethod]
+         public string graficarTopGanadasLista()
+         {
+
+            Miarbol.graficarTOPGANADAS();
+            return "grafica generada";
+         }
+
+         [WebMethod]
+         public string graficarTopDestruidas()
+         {
+
+             Miarbol.graficarTOP_Unidades_destruidas();
+             return "grafica generada";
+         }
+
+         [WebMethod]
+         public string TOPGANADAS()
+         {
+
+             Miarbol.recorrido(Miarbol.raiz);
+             return "listaTOP";
+         }
+
+         [WebMethod]
+         public string TOPDESTRUIDAS()
+         {
+
+             Miarbol.recorrido_naves(Miarbol.raiz);
+             return "listaDestruidas";
+         }
+
+         [WebMethod]
+         public string InsertarMatrizJuego(string columna, string fila, string unidad,string jugador)
+         {
+            int fil=Convert.ToInt32(fila);
+             int col=matriz.getLetra(Convert.ToChar(columna));
+             int nivel= matriz.setnivel(unidad);
+             matriz.insertarMatriz(jugador,fil,col,unidad,nivel);
+             matriz.ParaGraficarNiveles();
+             return "se ha insertado exitosamente";
+         }
     }
 }

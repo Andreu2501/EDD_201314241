@@ -2,7 +2,7 @@
 <SettingsFile xmlns="http://schemas.microsoft.com/VisualStudio/2004/01/settings" CurrentProfile="(Default)" GeneratedClassNamespace="Cliente.Properties" GeneratedClassName="Settings">
   <Profiles />
   <Settings>
-    <Setting Name="Cliente_localhost_ServicioWeb" Type="(Web Service URL)" Scope="Application">
+    <Setting Name="Cliente_serviciosw_ServicioWeb" Type="(Web Service URL)" Scope="Application">
       <Value Profile="(Default)">http://localhost:15816/Service1.asmx</Value>
     </Setting>
   </Settings>

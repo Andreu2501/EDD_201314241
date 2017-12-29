@@ -276,7 +276,7 @@ namespace ServicioWeb
                 b.Append(inOrder(raiz.izq));
                 b.Append(raiz.nickname);
                 b.Append("[label=\"<f0>|<f1>");
-                b.Append(raiz.nickname);
+                b.Append("Nickname: "+raiz.nickname+"\\n"+"Pass: "+ raiz.contraseña+"\\n"+"Correo: "+raiz.correo+"\\n"+"Conectado: "+raiz.conectado);
                 b.Append("|<f2>\"]\n");
                 b.Append(inOrder(raiz.der));
             
@@ -667,8 +667,25 @@ namespace ServicioWeb
             
         }
         //lista de los top mas ganados
-        lista_top TOP = new lista_top();
+      static  lista_top TOP = new lista_top();
        //REALIZACION DEL TOP 10 PARTIDAS GANADAS
+
+        public void recorridoTOP(nodo raiz)
+        {
+            if (raiz != null)
+            {
+                if (raiz.contador != 0)
+                {
+                    nodo_top n = new nodo_top(raiz.nickname, raiz.contador);
+                    TOP.insertarTop(n);
+                    recorrido(raiz);
+                }
+
+            }
+
+           
+
+        }
        public void recorrido(nodo raiz)
        {
             if (raiz != null)
@@ -702,7 +719,24 @@ namespace ServicioWeb
        
        }
         //REALIZACION DE PORCENTAJE DE NAVES DESTRUIDAS
-       lista_top naves = new lista_top();
+      static lista_top naves = new lista_top();
+
+      public void recorridoPrincipalNaves(nodo raiz)
+      {
+          if (raiz != null)
+          {
+              if (raiz.contador != 0)
+              {
+                  nodo_top n = new nodo_top(raiz.nickname, raiz.contador_destruidas);
+                  naves.insertarTop(n);
+                  recorrido_naves(raiz);
+              }
+
+          }
+
+
+
+      }
         public void recorrido_naves(nodo raiz)
         {
             if (raiz != null)
@@ -830,20 +864,29 @@ namespace ServicioWeb
 
             if (aux != null)
             {
-                do
+
+
+
+                while (aux != null)
                 {
                     archivo.WriteLine(aux.nickname_base + "[label= \" Usuario" + cont + "\\n nickname:  " + aux.nickname_base + "\\n" + "partidas ganadas:  " + aux.num + "\"];");
                     cont++;
-
-
-                    if (aux.siguiente != null)
-                    {
-                        archivo.WriteLine(aux.nickname_base + "->" + aux.siguiente.nickname_base + ";");
-                        archivo.WriteLine(aux.siguiente.nickname_base + "->" + aux.nickname_base + ";");
-
-                    }
                     aux = aux.siguiente;
-                } while (cont < 10);
+                }
+                aux = TOP.primero;
+                do
+                {
+                   
+                       
+                        if (aux.siguiente != null)
+                        {
+                            archivo.WriteLine(aux.nickname_base + "->" + aux.siguiente.nickname_base + ";");
+                            archivo.WriteLine(aux.siguiente.nickname_base + "->" + aux.nickname_base + ";");
+
+                        }
+                        aux = aux.siguiente;
+                    
+                } while (cont < 10 && aux!=null);
                 if (cont == 10)
                 {
                     archivo.WriteLine(aux.nickname_base + "[label= \" Usuario" + cont + "\\n nickname:  " + aux.nickname_base + "\\n" + "partidas ganadas:  " + aux.num + "\"];");
@@ -885,10 +928,16 @@ namespace ServicioWeb
 
             if (aux != null)
             {
-                do
+                while (aux != null)
                 {
                     archivo.WriteLine(aux.nickname_base + "[label= \" Usuario" + cont + "\\n nickname:  " + aux.nickname_base + "\\n" + "unidades_destruidas:  " + aux.num + "\"];");
                     cont++;
+                    aux = aux.siguiente;
+                }
+                aux = naves.primero;
+                do
+                {
+                   
 
 
                     if (aux.siguiente != null)
@@ -898,7 +947,7 @@ namespace ServicioWeb
 
                     }
                     aux = aux.siguiente;
-                } while (cont < 10);
+                } while (cont < 10 && aux!=null);
                 if (cont == 10)
                 {
                     archivo.WriteLine(aux.nickname_base + "[label= \" Usuario" + cont + "\\n nickname:  " + aux.nickname_base + "\\n" + "unidades_destruidas:  " + aux.num + "\"];");
@@ -930,7 +979,7 @@ namespace ServicioWeb
             nodo_lista aux = raiz.lista.primero;
             while (aux != null)
             {
-                b.Append(aux.nickname_base+aux.nickname_oponente+"[label=\""+aux.nickname_oponente+"\"];\n");
+                b.Append(aux.nickname_base+aux.nickname_oponente+"[label=\""+"Nickname Oponente: "+aux.nickname_oponente+"\\n"+"desplegadas: "+aux.unidades_desplegadas+"\\n"+"sobrevivientes: "+aux.unidades_sobrevivientes+"\\n"+"destruidas: "+aux.unidades_destruidas+"\"];\n");
                 aux = aux.siguiente;
             }
             b.Append("}\n");
@@ -968,6 +1017,7 @@ namespace ServicioWeb
         
         }
         StringBuilder b = new StringBuilder();
+        //graficar usuarios y listas
        
         public string recorrido_principal(nodo raiz)
         { if(raiz!=null){
@@ -1018,10 +1068,32 @@ namespace ServicioWeb
         
         }
 
+        public nodo buscarUsuarioContraseña(nodo raiz, string nickname_base, string contraseña)
+        {
+            if (raiz == null)
+            {
+                return null;
+            }
+            else if (raiz.nickname.CompareTo(nickname_base) == 0 && raiz.contraseña.CompareTo(contraseña)==0)
+            {
+                return raiz;
+            }
+            else if (raiz.nickname.CompareTo(nickname_base) > 0)
+            {
 
+                return buscarUsuarioContraseña(raiz.izq, nickname_base,contraseña);
+            }
+            else if (raiz.nickname.CompareTo(nickname_base) < 0)
+            {
+                return buscarUsuarioContraseña(raiz.der, nickname_base, contraseña);
+            }
+            else
+            {
+                return null;
+            }
 
-
-
+        }
+        
 
 
 

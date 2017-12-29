@@ -7,6 +7,7 @@ using System.IO;
 using System.Diagnostics;
 
 
+
 namespace ServicioWeb
 {
     public class MatrizOrtogonal
@@ -26,26 +27,24 @@ namespace ServicioWeb
             public nodo_matriz siguiente;
             public nodo_matriz anterior;
             public string unidad;
-            public int movimiento;
-            public int alcance;
-            public int daño;
-            public int vida;
+           // public int movimiento;
+           // public int alcance;
+          //  public int daño;
+           // public int vida;
+            public string jugador;
             public int fila;
             public int columna;
             public int nivel;
-            public nodo_matriz(int fila, int columna, string unidad, int movimiento, int alcance, int daño, int vida, int nivel)
+            public nodo_matriz(string jugador,int fila, int columna, string unidad, int nivel)
             {
                 this.abajo = null;
                 this.anterior = null;
                 this.arriba = null;
                 this.abajo = null;
+                this.jugador = jugador;
                 this.fila = fila;
                 this.columna = columna;
                 this.unidad = unidad;
-                this.movimiento = movimiento;
-                this.alcance = alcance;
-                this.daño = daño;
-                this.vida = vida;
                 this.nivel = nivel;
 
 
@@ -78,6 +77,7 @@ namespace ServicioWeb
 
 
         }
+      
 
         //*******************************************************************************************************************************
         //LISTA CABECERA
@@ -168,13 +168,16 @@ namespace ServicioWeb
             return encontrado;
 
         }
+
+
+        
         //*******************************************************************************************************************************
         //MATRIZ
         //*******************************************************************************************************************************   
 
-        public void insertarMatriz(int fila, int columna, string unidad, int movimiento, int alcance, int daño, int vida, int nivel)
+        public void insertarMatriz(string jugador,int fila, int columna, string unidad, int nivel)
         {
-            nodo_matriz nuevo = new nodo_matriz(fila, columna, unidad, movimiento, alcance, daño, vida, nivel);
+            nodo_matriz nuevo = new nodo_matriz(jugador, fila, columna, unidad, nivel);
 
             //INSERCION_FILAS
             //devuelve un nodo del encabezado si lo encuentra
@@ -444,6 +447,7 @@ namespace ServicioWeb
                 return null;
             }
         }
+
 
         public void graficar_fila(TextWriter archivo,int nivel)
         {
@@ -788,6 +792,14 @@ namespace ServicioWeb
                 {
                     if (aux != null)
                     {
+                        while (aux != null) 
+                        {
+
+                            archivo.WriteLine("\"Unidad" + aux.fila + "," + aux.columna + "\""+"[ label=\" Jugador: " + aux.jugador+"\\n"+"Unidad "+aux.unidad+"\\n"+aux.fila+","+devolverLetra(aux.columna)+ "\"];\n");
+                            aux = aux.siguiente;
+                        }
+
+                        aux = subirFilas.acceso;
                         while (aux.siguiente != null)
                         {
                             archivo.WriteLine("\"Unidad" + aux.fila + "," + aux.columna + "\"" + "->" + "\"Unidad" + aux.siguiente.fila + "," + aux.siguiente.columna + "\";\n");
@@ -1081,6 +1093,54 @@ namespace ServicioWeb
             return ascii - 65;
         
         }
+
+        //informacion de la unidad
+        public int setnivel(string unidad)
+        {
+  
+            var letra = unidad.ToCharArray();
+            //Nivel0
+            if ((letra[0] == 83))//nivel0 Submarino
+            {
+
+                return 0;
+            }else if((letra[0]==70))//nivel 1 Fragata
+            {
+                return 1;
+            }
+            else if ((letra[0] == 67))//nivel 1  Crucero
+            {
+                return 1;
+            }
+            else if ((letra[0] == 66))//nivel 2 Bombardero
+            {
+                return 2;
+            }
+            else if ((letra[0] == 67) && (letra[0] == 97))//nivel 2 Caza
+            {
+                return 2;
+            }
+            else if ((letra[0] == 72))//nivel 2 Helicoptero
+            {
+                return 2;
+
+            }
+            else if ((letra[0] == 78))//nivel 3 Neosatelite
+            {
+                return 3;
+            }
+            else
+            {
+                return -1;
+            }
+                   
+        }
+
+
+
+        
+
+       
           
     }
 }
