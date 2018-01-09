@@ -1,0 +1,6 @@
+C:\Users\Andrea Flores\Documents\DICIEMBRE2017\PROYECTO_FASE1\competencia\competencia\bin\Debug\competencia.exe.config
+C:\Users\Andrea Flores\Documents\DICIEMBRE2017\PROYECTO_FASE1\competencia\competencia\bin\Debug\competencia.exe
+C:\Users\Andrea Flores\Documents\DICIEMBRE2017\PROYECTO_FASE1\competencia\competencia\bin\Debug\competencia.pdb
+C:\Users\Andrea Flores\Documents\DICIEMBRE2017\PROYECTO_FASE1\competencia\competencia\obj\Debug\competencia.csprojResolveAssemblyReference.cache
+C:\Users\Andrea Flores\Documents\DICIEMBRE2017\PROYECTO_FASE1\competencia\competencia\obj\Debug\competencia.exe
+C:\Users\Andrea Flores\Documents\DICIEMBRE2017\PROYECTO_FASE1\competencia\competencia\obj\Debug\competencia.pdb

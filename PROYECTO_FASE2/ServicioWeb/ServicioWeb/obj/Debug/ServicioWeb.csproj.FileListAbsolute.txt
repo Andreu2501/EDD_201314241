@@ -1,0 +1,15 @@
+C:\Users\Andrea Flores\Documents\DICIEMBRE2017\PROYECTO1\ServicioWeb\ServicioWeb\bin\ServicioWeb.dll
+C:\Users\Andrea Flores\Documents\DICIEMBRE2017\PROYECTO1\ServicioWeb\ServicioWeb\bin\ServicioWeb.pdb
+C:\Users\Andrea Flores\Documents\DICIEMBRE2017\PROYECTO1\ServicioWeb\ServicioWeb\obj\Debug\ServicioWeb.csprojResolveAssemblyReference.cache
+C:\Users\Andrea Flores\Documents\DICIEMBRE2017\PROYECTO1\ServicioWeb\ServicioWeb\obj\Debug\ServicioWeb.dll
+C:\Users\Andrea Flores\Documents\DICIEMBRE2017\PROYECTO1\ServicioWeb\ServicioWeb\obj\Debug\ServicioWeb.pdb
+C:\Users\Andrea Flores\Documents\DICIEMBRE2017\PROYECTO_FASE1\ServicioWeb\ServicioWeb\bin\ServicioWeb.dll
+C:\Users\Andrea Flores\Documents\DICIEMBRE2017\PROYECTO_FASE1\ServicioWeb\ServicioWeb\bin\ServicioWeb.pdb
+C:\Users\Andrea Flores\Documents\DICIEMBRE2017\PROYECTO_FASE1\ServicioWeb\ServicioWeb\obj\Debug\ServicioWeb.csprojResolveAssemblyReference.cache
+C:\Users\Andrea Flores\Documents\DICIEMBRE2017\PROYECTO_FASE1\ServicioWeb\ServicioWeb\obj\Debug\ServicioWeb.dll
+C:\Users\Andrea Flores\Documents\DICIEMBRE2017\PROYECTO_FASE1\ServicioWeb\ServicioWeb\obj\Debug\ServicioWeb.pdb
+C:\Users\Andrea Flores\Documents\GitHub\EDD_201314241\PROYECTO_FASE1\ServicioWeb\ServicioWeb\bin\ServicioWeb.dll
+C:\Users\Andrea Flores\Documents\GitHub\EDD_201314241\PROYECTO_FASE1\ServicioWeb\ServicioWeb\bin\ServicioWeb.pdb
+C:\Users\Andrea Flores\Documents\GitHub\EDD_201314241\PROYECTO_FASE1\ServicioWeb\ServicioWeb\obj\Debug\ServicioWeb.csprojResolveAssemblyReference.cache
+C:\Users\Andrea Flores\Documents\GitHub\EDD_201314241\PROYECTO_FASE1\ServicioWeb\ServicioWeb\obj\Debug\ServicioWeb.dll
+C:\Users\Andrea Flores\Documents\GitHub\EDD_201314241\PROYECTO_FASE1\ServicioWeb\ServicioWeb\obj\Debug\ServicioWeb.pdb

@@ -1,0 +1,9 @@
+C:\Users\Andrea Flores\Documents\DICIEMBRE2017\PROYECTO_FASE1\arbolb\arbolb\bin\Debug\arbolb.exe.config
+C:\Users\Andrea Flores\Documents\DICIEMBRE2017\PROYECTO_FASE1\arbolb\arbolb\bin\Debug\arbolb.exe
+C:\Users\Andrea Flores\Documents\DICIEMBRE2017\PROYECTO_FASE1\arbolb\arbolb\bin\Debug\arbolb.pdb
+C:\Users\Andrea Flores\Documents\DICIEMBRE2017\PROYECTO_FASE1\arbolb\arbolb\obj\Debug\arbolb.csprojResolveAssemblyReference.cache
+C:\Users\Andrea Flores\Documents\DICIEMBRE2017\PROYECTO_FASE1\arbolb\arbolb\obj\Debug\arbolb.Form1.resources
+C:\Users\Andrea Flores\Documents\DICIEMBRE2017\PROYECTO_FASE1\arbolb\arbolb\obj\Debug\arbolb.Properties.Resources.resources
+C:\Users\Andrea Flores\Documents\DICIEMBRE2017\PROYECTO_FASE1\arbolb\arbolb\obj\Debug\arbolb.csproj.GenerateResource.Cache
+C:\Users\Andrea Flores\Documents\DICIEMBRE2017\PROYECTO_FASE1\arbolb\arbolb\obj\Debug\arbolb.exe
+C:\Users\Andrea Flores\Documents\DICIEMBRE2017\PROYECTO_FASE1\arbolb\arbolb\obj\Debug\arbolb.pdb

@@ -1,0 +1,5 @@
+C:\Users\Andrea Flores\Documents\DICIEMBRE2017\PROYECTO_FASE1\WebApplicationCliente\WebApplicationCliente\bin\WebApplicationCliente.dll
+C:\Users\Andrea Flores\Documents\DICIEMBRE2017\PROYECTO_FASE1\WebApplicationCliente\WebApplicationCliente\bin\WebApplicationCliente.pdb
+C:\Users\Andrea Flores\Documents\DICIEMBRE2017\PROYECTO_FASE1\WebApplicationCliente\WebApplicationCliente\obj\Debug\WebApplicationCliente.dll
+C:\Users\Andrea Flores\Documents\DICIEMBRE2017\PROYECTO_FASE1\WebApplicationCliente\WebApplicationCliente\obj\Debug\WebApplicationCliente.pdb
+C:\Users\Andrea Flores\Documents\DICIEMBRE2017\PROYECTO_FASE1\WebApplicationCliente\WebApplicationCliente\obj\Debug\WebApplicationCliente.csprojResolveAssemblyReference.cache

@@ -1,0 +1,10 @@
+C:\Users\Andrea Flores\Documents\DICIEMBRE2017\PROYECTO1\Cliente\Cliente\bin\Cliente.dll
+C:\Users\Andrea Flores\Documents\DICIEMBRE2017\PROYECTO1\Cliente\Cliente\bin\Cliente.pdb
+C:\Users\Andrea Flores\Documents\DICIEMBRE2017\PROYECTO1\Cliente\Cliente\obj\Debug\Cliente.csprojResolveAssemblyReference.cache
+C:\Users\Andrea Flores\Documents\DICIEMBRE2017\PROYECTO1\Cliente\Cliente\obj\Debug\Cliente.dll
+C:\Users\Andrea Flores\Documents\DICIEMBRE2017\PROYECTO1\Cliente\Cliente\obj\Debug\Cliente.pdb
+C:\Users\Andrea Flores\Documents\DICIEMBRE2017\PROYECTO_FASE1\Cliente\Cliente\bin\Cliente.dll
+C:\Users\Andrea Flores\Documents\DICIEMBRE2017\PROYECTO_FASE1\Cliente\Cliente\bin\Cliente.pdb
+C:\Users\Andrea Flores\Documents\DICIEMBRE2017\PROYECTO_FASE1\Cliente\Cliente\obj\Debug\Cliente.csprojResolveAssemblyReference.cache
+C:\Users\Andrea Flores\Documents\DICIEMBRE2017\PROYECTO_FASE1\Cliente\Cliente\obj\Debug\Cliente.dll
+C:\Users\Andrea Flores\Documents\DICIEMBRE2017\PROYECTO_FASE1\Cliente\Cliente\obj\Debug\Cliente.pdb

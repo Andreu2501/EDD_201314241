@@ -1,0 +1,70 @@
+digraph G{
+node[shape=record, height=.1,style=filled];
+edge[color=black];
+rankdir=UD;
+
+{rank=min;Nivel3;
+
+Columna3;
+Columna5;
+};
+
+Columna3[ label="D"];
+
+Columna5[ label="F"];
+
+Columna3-> Columna5;
+
+Columna5-> Columna3;
+
+
+Columna3 -> "Unidad4,3";
+
+"Unidad4,3" ->   Columna3;
+
+Columna5 -> "Unidad9,5";
+
+"Unidad9,5" ->   Columna5;
+
+Fila4[ label="FILA4"];
+
+Fila9[ label="FILA9"];
+
+Fila4-> Fila9;
+
+Fila9-> Fila4;
+
+
+Fila4 -> "Unidad4,3";
+
+"Unidad4,3" -> Fila4;
+
+Fila9 -> "Unidad9,5";
+
+"Unidad9,5" -> Fila9;
+
+{rank=same;  Fila4;
+"Unidad4,3";
+}
+
+
+{rank=same;  Fila9;
+"Unidad9,5";
+}
+
+
+Nivel3-> Columna3;
+
+Columna3-> Nivel3;
+
+Nivel3 -> Fila4;
+
+Fila4-> Nivel3;
+
+"Unidad4,3"[ label=" Jugador: andrea\nUnidad Neosatelite\n4,D"];
+
+"Unidad9,5"[ label=" Jugador: celeste\nUnidad Neosatelite\n9,F"];
+
+label = "MATRIZ ORTOGONAL ";
+
+}

@@ -1,0 +1,196 @@
+digraph G{
+node[shape=record, height=.1,style=filled];
+edge[color=black];
+rankdir=UD;
+
+{rank=min;Nivel0;
+
+Columna1;
+Columna2;
+Columna3;
+Columna4;
+Columna5;
+Columna7;
+Columna8;
+};
+
+Columna1[ label="Columna1"];
+
+Columna2[ label="Columna2"];
+
+Columna3[ label="Columna3"];
+
+Columna4[ label="Columna4"];
+
+Columna5[ label="Columna5"];
+
+Columna7[ label="Columna7"];
+
+Columna8[ label="Columna8"];
+
+Columna1-> Columna2;
+
+Columna2-> Columna1;
+
+Columna2-> Columna3;
+
+Columna3-> Columna2;
+
+Columna3-> Columna4;
+
+Columna4-> Columna3;
+
+Columna4-> Columna5;
+
+Columna5-> Columna4;
+
+Columna5-> Columna7;
+
+Columna7-> Columna5;
+
+Columna7-> Columna8;
+
+Columna8-> Columna7;
+
+Columna1 -> "Unidad1,1";
+
+"Unidad1,1" ->   Columna1;
+
+Columna2 -> "Unidad4,2";
+
+"Unidad4,2" ->   Columna2;
+
+Columna3 -> "Unidad1,3";
+
+"Unidad1,3" ->   Columna3;
+
+Columna4 -> "Unidad6,4";
+
+"Unidad6,4" ->   Columna4;
+
+Columna5 -> "Unidad1,5";
+
+"Unidad1,5" ->   Columna5;
+
+Columna7 -> "Unidad1,7";
+
+"Unidad1,7" ->   Columna7;
+
+Columna8 -> "Unidad6,8";
+
+"Unidad6,8" ->   Columna8;
+
+Fila1[ label="FILA1"];
+
+Fila4[ label="FILA4"];
+
+Fila5[ label="FILA5"];
+
+Fila6[ label="FILA6"];
+
+Fila1-> Fila4;
+
+Fila4-> Fila1;
+
+Fila4-> Fila5;
+
+Fila5-> Fila4;
+
+Fila5-> Fila6;
+
+Fila6-> Fila5;
+
+Fila1 -> "Unidad1,1";
+
+"Unidad1,1" -> Fila1;
+
+Fila4 -> "Unidad4,2";
+
+"Unidad4,2" -> Fila4;
+
+Fila5 -> "Unidad5,1";
+
+"Unidad5,1" -> Fila5;
+
+Fila6 -> "Unidad6,4";
+
+"Unidad6,4" -> Fila6;
+
+{rank=same;  Fila1;
+"Unidad1,1";
+"Unidad1,3";
+"Unidad1,5";
+"Unidad1,7";
+}
+
+
+{rank=same;  Fila4;
+"Unidad4,2";
+}
+
+
+{rank=same;  Fila5;
+"Unidad5,1";
+"Unidad5,2";
+"Unidad5,5";
+"Unidad5,7";
+}
+
+
+{rank=same;  Fila6;
+"Unidad6,4";
+"Unidad6,8";
+}
+
+
+Nivel0-> Columna1;
+
+Nivel0 -> Fila1;
+
+"Unidad1,1"->"Unidad1,3";
+
+"Unidad1,3"->"Unidad1,1";
+
+"Unidad1,1"->"Unidad5,1";
+
+"Unidad5,1"->"Unidad1,1";
+
+"Unidad1,3"->"Unidad1,5";
+
+"Unidad1,5"->"Unidad1,3";
+
+"Unidad1,5"->"Unidad1,7";
+
+"Unidad1,7"->"Unidad1,5";
+
+"Unidad1,5"->"Unidad5,5";
+
+"Unidad5,5"->"Unidad1,5";
+
+"Unidad1,7"->"Unidad5,7";
+
+"Unidad5,7"->"Unidad1,7";
+
+"Unidad4,2"->"Unidad5,2";
+
+"Unidad5,2"->"Unidad4,2";
+
+"Unidad5,1"->"Unidad5,2";
+
+"Unidad5,2"->"Unidad5,1";
+
+"Unidad5,2"->"Unidad5,5";
+
+"Unidad5,5"->"Unidad5,2";
+
+"Unidad5,5"->"Unidad5,7";
+
+"Unidad5,7"->"Unidad5,5";
+
+"Unidad6,4"->"Unidad6,8";
+
+"Unidad6,8"->"Unidad6,4";
+
+label = "MATRIZ ORTOGONAL ";
+
+}

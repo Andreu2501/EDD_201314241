@@ -1,0 +1,7 @@
+digraph G{
+node[shape=record, height=.1];
+Stin94[label= " Usuario1\n nickname:  Stin94\nunidades_destruidas:  75"];
+Mord86[label= " Usuario2\n nickname:  Mord86\nunidades_destruidas:  75"];
+Stin94->Mord86;
+Mord86->Stin94;
+}

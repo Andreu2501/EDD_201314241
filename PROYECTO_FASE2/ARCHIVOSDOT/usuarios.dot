@@ -1,0 +1,86 @@
+digraph G{
+node[shape=record, height=.1];
+Abwn30[label="<f0>|<f1>Nickname: Abwn30\nPass: EMX47IQS8EJ\nCorreo: imperdiet.non.vestibulum@tellusidnunc.ca\nConectado: 0|<f2>"]
+Amer64[label="<f0>|<f1>Nickname: Amer64\nPass: MMU55KUG4GZ\nCorreo: sit@eu.org\nConectado: 0|<f2>"]
+Asro25[label="<f0>|<f1>Nickname: Asro25\nPass: PDW92QLF0HC\nCorreo: turpis.Aliquam.adipiscing@tincidunt.net\nConectado: 0|<f2>"]
+Avey48[label="<f0>|<f1>Nickname: Avey48\nPass: ZEE21HJG3WL\nCorreo: Class@orci.net\nConectado: 0|<f2>"]
+Axon36[label="<f0>|<f1>Nickname: Axon36\nPass: XJJ16GWD0XD\nCorreo: Pellentesque.ultricies.dignissim@idmagnaet.ca\nConectado: 0|<f2>"]
+Frly47[label="<f0>|<f1>Nickname: Frly47\nPass: UBB80CLZ9IE\nCorreo: elit.a@aliquamiaculis.ca\nConectado: 1|<f2>"]
+Idin94[label="<f0>|<f1>Nickname: Idin94\nPass: NMB35GLX6GU\nCorreo: tempus.non@nullaDonec.com\nConectado: 0|<f2>"]
+Imre78[label="<f0>|<f1>Nickname: Imre78\nPass: MDQ80CXX3XT\nCorreo: eget.dictum.placerat@atsem.net\nConectado: 0|<f2>"]
+Jado86[label="<f0>|<f1>Nickname: Jado86\nPass: NDG72OCE0BM\nCorreo: eu@eleifendvitaeerat.org\nConectado: 1|<f2>"]
+Kaez42[label="<f0>|<f1>Nickname: Kaez42\nPass: BLH11FPZ6AP\nCorreo: consectetuer.cursus.et@semmolestiesodales.co.uk\nConectado: 0|<f2>"]
+Mord86[label="<f0>|<f1>Nickname: Mord86\nPass: NPZ44VGE5FD\nCorreo: scelerisque.sed@lectusa.com\nConectado: 1|<f2>"]
+Roan78[label="<f0>|<f1>Nickname: Roan78\nPass: FOA51PLE0LG\nCorreo: odio@Etiambibendumfermentum.edu\nConectado: 1|<f2>"]
+Stin94[label="<f0>|<f1>Nickname: Stin94\nPass: WAG95DOM2LZ\nCorreo: in.tempus@a.com\nConectado: 1|<f2>"]
+Taon95[label="<f0>|<f1>Nickname: Taon95\nPass: USW07EIK1AC\nCorreo: parturient@Nulla.co.uk\nConectado: 0|<f2>"]
+
+Mord86:f0->Asro25:f1;
+Asro25:f0->Amer64:f1;
+Amer64:f0->Abwn30:f1;
+Asro25:f2->Imre78:f1;
+Imre78:f0->Avey48:f1;
+Avey48:f2->Idin94:f1;
+Idin94:f0->Axon36:f1;
+Axon36:f2->Frly47:f1;
+Imre78:f2->Kaez42:f1;
+Kaez42:f0->Jado86:f1;
+Mord86:f2->Stin94:f1;
+Stin94:f0->Roan78:f1;
+Stin94:f2->Taon95:f1;
+
+nodoInformacion[label="<f0>Altura: 7|<f1>Ramas: 9|<f2>Hojas: 5|<f3>Nivel: 6"];
+subgraph cluster0{
+node[style=filled];
+Mord86Stin94[label="Nickname Oponente: Stin94\ndesplegadas: 10\nsobrevivientes: 8\ndestruidas: 2"];
+Mord86Asro25[label="Nickname Oponente: Asro25\ndesplegadas: 15\nsobrevivientes: 10\ndestruidas: 5"];
+Mord86Imre78[label="Nickname Oponente: Imre78\ndesplegadas: 20\nsobrevivientes: 3\ndestruidas: 17"];
+Mord86Taon95[label="Nickname Oponente: Taon95\ndesplegadas: 16\nsobrevivientes: 10\ndestruidas: 6"];
+Mord86Avey48[label="Nickname Oponente: Avey48\ndesplegadas: 18\nsobrevivientes: 8\ndestruidas: 10"];
+Mord86Kaez42[label="Nickname Oponente: Kaez42\ndesplegadas: 20\nsobrevivientes: 10\ndestruidas: 10"];
+Mord86Idin94[label="Nickname Oponente: Idin94\ndesplegadas: 30\nsobrevivientes: 29\ndestruidas: 1"];
+Mord86Jado86[label="Nickname Oponente: Jado86\ndesplegadas: 25\nsobrevivientes: 1\ndestruidas: 24"];
+}
+Mord86->Mord86Stin94;
+Mord86Stin94->Mord86Asro25;
+Mord86Asro25->Mord86Stin94;
+Mord86Asro25->Mord86Imre78;
+Mord86Imre78->Mord86Asro25;
+Mord86Imre78->Mord86Taon95;
+Mord86Taon95->Mord86Imre78;
+Mord86Taon95->Mord86Avey48;
+Mord86Avey48->Mord86Taon95;
+Mord86Avey48->Mord86Kaez42;
+Mord86Kaez42->Mord86Avey48;
+Mord86Kaez42->Mord86Idin94;
+Mord86Idin94->Mord86Kaez42;
+Mord86Idin94->Mord86Jado86;
+Mord86Jado86->Mord86Idin94;
+subgraph cluster1{
+node[style=filled];
+Stin94Mord86[label="Nickname Oponente: Mord86\ndesplegadas: 21\nsobrevivientes: 15\ndestruidas: 6"];
+Stin94Asro25[label="Nickname Oponente: Asro25\ndesplegadas: 19\nsobrevivientes: 14\ndestruidas: 5"];
+Stin94Imre78[label="Nickname Oponente: Imre78\ndesplegadas: 18\nsobrevivientes: 16\ndestruidas: 2"];
+Stin94Taon95[label="Nickname Oponente: Taon95\ndesplegadas: 10\nsobrevivientes: 9\ndestruidas: 1"];
+Stin94Avey48[label="Nickname Oponente: Avey48\ndesplegadas: 19\nsobrevivientes: 10\ndestruidas: 9"];
+Stin94Kaez42[label="Nickname Oponente: Kaez42\ndesplegadas: 17\nsobrevivientes: 8\ndestruidas: 9"];
+Stin94Idin94[label="Nickname Oponente: Idin94\ndesplegadas: 23\nsobrevivientes: 3\ndestruidas: 20"];
+Stin94Jado86[label="Nickname Oponente: Jado86\ndesplegadas: 28\nsobrevivientes: 5\ndestruidas: 23"];
+}
+Stin94->Stin94Mord86;
+Stin94Mord86->Stin94Asro25;
+Stin94Asro25->Stin94Mord86;
+Stin94Asro25->Stin94Imre78;
+Stin94Imre78->Stin94Asro25;
+Stin94Imre78->Stin94Taon95;
+Stin94Taon95->Stin94Imre78;
+Stin94Taon95->Stin94Avey48;
+Stin94Avey48->Stin94Taon95;
+Stin94Avey48->Stin94Kaez42;
+Stin94Kaez42->Stin94Avey48;
+Stin94Kaez42->Stin94Idin94;
+Stin94Idin94->Stin94Kaez42;
+Stin94Idin94->Stin94Jado86;
+Stin94Jado86->Stin94Idin94;
+
+}

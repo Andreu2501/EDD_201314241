@@ -1,0 +1,60 @@
+digraph G{
+node[shape=record, height=.1,style=filled];
+edge[color=black];
+rankdir=UD;
+
+{rank=min;Nivel2;
+
+Columna10;
+Columna42;
+};
+
+Columna10[ label="K"];
+
+Columna42[ label="OO"];
+
+Columna10-> Columna42;
+
+Columna42-> Columna10;
+
+
+Columna10 -> "Unidad6,10";
+
+"Unidad6,10" ->   Columna10;
+
+Columna42 -> "Unidad6,42";
+
+"Unidad6,42" ->   Columna42;
+
+Fila6[ label="FILA6"];
+
+
+Fila6 -> "Unidad6,10";
+
+"Unidad6,10" -> Fila6;
+
+{rank=same;  Fila6;
+"Unidad6,10";
+"Unidad6,42";
+}
+
+
+Nivel2-> Columna10;
+
+Columna10-> Nivel2;
+
+Nivel2 -> Fila6;
+
+Fila6-> Nivel2;
+
+"Unidad6,10"[ label=" Jugador: andrea\nUnidad Bombardero\n6,K"];
+
+"Unidad6,42"[ label=" Jugador: andrea\nUnidad Bombardero\n6,OO"];
+
+"Unidad6,10"->"Unidad6,42";
+
+"Unidad6,42"->"Unidad6,10";
+
+label = "MATRIZ ORTOGONAL ";
+
+}

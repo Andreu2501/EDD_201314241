@@ -1,0 +1,16 @@
+digraph G{
+node[shape=record, height=.1];
+allan[label="<f0>|<f1>allan|<f2>"]
+andrea[label="<f0>|<f1>andrea|<f2>"]
+carol[label="<f0>|<f1>carol|<f2>"]
+duglas[label="<f0>|<f1>duglas|<f2>"]
+nelson[label="<f0>|<f1>nelson|<f2>"]
+pedro[label="<f0>|<f1>pedro|<f2>"]
+
+andrea:f0->allan:f1;
+andrea:f2->nelson:f1;
+nelson:f0->carol:f1;
+carol:f2->duglas:f1;
+nelson:f2->pedro:f1;
+
+}
